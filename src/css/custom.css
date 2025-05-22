@@ -31,11 +31,24 @@
   --ifm-color-primary-lighter: #6ebe71;
   --ifm-color-primary-lightest: #8aca8d;
   --docusaurus-highlighted-code-line-bg: rgba(76, 175, 80, 0.3);
+  
+  /* Dark mode custom colors */
+  --phoenix-accent: #66bb6a;
+  --phoenix-light-bg: #1a1a1a;
+  --ifm-background-color: #121212;
+  --ifm-background-surface-color: #1e1e1e;
+  
+  /* Dark mode hero banner */
+  --ifm-hero-background-color: linear-gradient(135deg, #0d4715 0%, #1b5e20 50%, #2e8b57 100%);
 }
 
 /* Global styles */
 .hero--primary {
   --ifm-hero-background-color: linear-gradient(135deg, #1b5e20 0%, #2e8b57 100%);
+}
+
+[data-theme='dark'] .hero--primary {
+  --ifm-hero-background-color: linear-gradient(135deg, #0d4715 0%, #1b5e20 50%, #2e8b57 100%);
 }
 
 .button--secondary {
@@ -49,10 +62,48 @@
   color: white;
 }
 
+[data-theme='dark'] .button--secondary {
+  background-color: var(--phoenix-accent);
+  border: 1px solid var(--phoenix-accent);
+}
+
+[data-theme='dark'] .button--secondary:hover {
+  background-color: #7cc67f;
+  border-color: #7cc67f;
+}
+
 .navbar {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+[data-theme='dark'] .navbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 .footer--dark {
   --ifm-footer-background-color: #1b5e20;
+}
+
+[data-theme='dark'] .footer--dark {
+  --ifm-footer-background-color: #0d4715;
+}
+
+/* Theme toggle button styling */
+.navbar__item {
+  display: flex;
+  align-items: center;
+}
+
+[data-theme='dark'] .toggle_vylO {
+  background-color: var(--ifm-color-primary);
+}
+
+/* Improve dark mode contrast for cards and sections */
+[data-theme='dark'] .card {
+  background-color: var(--ifm-background-surface-color);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+[data-theme='dark'] .card:hover {
+  border-color: var(--ifm-color-primary);
 }

@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Phoenixd',
-  tagline: 'Servidor de pagos Bitcoin a través de la red Lightning',
+  title: 'Mastering Phoenixd',
+  tagline: 'Bitcoin payment server through the Lightning Network',
   // favicon: 'img/favicon.ico', // Ensure you have this file in static/img or remove/update path
 
   // Set the production url of your site here
@@ -27,8 +27,8 @@ const config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'es',
-    locales: ['es'],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
 
   presets: [
@@ -51,23 +51,28 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Phoenixd',
+        title: 'Mastering Phoenixd',
         logo: {
           alt: 'Phoenixd Logo',
-          src: 'img/logo.svg',
+          src: 'img/lightning_logo.svg',
         },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Documentación',
+            label: 'Documentation',
             to: '/intro',
           },
           {
-            href: 'https://github.com/phoenixframework/phoenix',
+            href: 'https://github.com/ACINQ/phoenixd',
             label: 'GitHub',
             position: 'right',
+          },
+          {
+            type: 'html',
+            position: 'right',
+            value: '<div style="width: 20px;"></div>', // Spacer
           },
         ],
       },
@@ -75,24 +80,24 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Documentación',
+            title: 'Docs',
             items: [
               {
-                label: 'Introducción',
+                label: 'Introduction',
                 to: '/intro',
               },
               {
-                label: 'Instalación',
+                label: 'Installation',
                 to: '/intro',
               },
               {
-                label: 'Guías',
+                label: 'Guides',
                 to: '/intro',
               },
             ],
           },
           {
-            title: 'Comunidad',
+            title: 'Community',
             items: [
               {
                 label: 'Bitcoin Forum',
@@ -109,7 +114,7 @@ const config = {
             ],
           },
           {
-            title: 'Más',
+            title: 'More',
             items: [
               {
                 label: 'GitHub',
@@ -122,7 +127,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Phoenixd - Servidor de pagos Bitcoin Lightning. Construido con Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Phoenixd - Bitcoin Lightning Payment Server. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
