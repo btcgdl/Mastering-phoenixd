@@ -6,46 +6,46 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #6f42c1; /* Phoenix purple */
-  --ifm-color-primary-dark: #6338ae;
-  --ifm-color-primary-darker: #5d34a4;
-  --ifm-color-primary-darkest: #4c2b87;
-  --ifm-color-primary-light: #7e56c7;
-  --ifm-color-primary-lighter: #8761cb;
-  --ifm-color-primary-lightest: #9f81d5;
+  --ifm-color-primary: #2e8b57; /* Verde esmeralda como color principal */
+  --ifm-color-primary-dark: #297d4e;
+  --ifm-color-primary-darker: #27764a;
+  --ifm-color-primary-darkest: #20613d;
+  --ifm-color-primary-light: #339960;
+  --ifm-color-primary-lighter: #35a164;
+  --ifm-color-primary-lightest: #3dba73;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(111, 66, 193, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(46, 139, 87, 0.1);
   
   /* Custom colors */
-  --phoenix-orange: #F05523;
-  --phoenix-light-bg: #f8f9fa;
+  --phoenix-accent: #4caf50;
+  --phoenix-light-bg: #f0f7f0;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #9f81d5; /* Lighter purple for dark mode */
-  --ifm-color-primary-dark: #8e6acf;
-  --ifm-color-primary-darker: #8560cb;
-  --ifm-color-primary-darkest: #6b3dbb;
-  --ifm-color-primary-light: #b098db;
-  --ifm-color-primary-lighter: #b9a2df;
-  --ifm-color-primary-lightest: #d2c4ec;
-  --docusaurus-highlighted-code-line-bg: rgba(159, 129, 213, 0.3);
+  --ifm-color-primary: #4caf50; /* Verde más claro para modo oscuro */
+  --ifm-color-primary-dark: #45a049;
+  --ifm-color-primary-darker: #419744;
+  --ifm-color-primary-darkest: #357c38;
+  --ifm-color-primary-light: #61b965;
+  --ifm-color-primary-lighter: #6ebe71;
+  --ifm-color-primary-lightest: #8aca8d;
+  --docusaurus-highlighted-code-line-bg: rgba(76, 175, 80, 0.3);
 }
 
 /* Global styles */
 .hero--primary {
-  --ifm-hero-background-color: linear-gradient(135deg, #4a3f8c 0%, #6f42c1 100%);
+  --ifm-hero-background-color: linear-gradient(135deg, #1b5e20 0%, #2e8b57 100%);
 }
 
 .button--secondary {
-  background-color: var(--phoenix-orange);
+  background-color: var(--phoenix-accent);
   color: white;
   border: none;
 }
 
 .button--secondary:hover {
-  background-color: #e04b1c;
+  background-color: #45a049;
   color: white;
 }
 
@@ -54,5 +54,5 @@
 }
 
 .footer--dark {
-  --ifm-footer-background-color: #2a2449;
+  --ifm-footer-background-color: #1b5e20;
 }

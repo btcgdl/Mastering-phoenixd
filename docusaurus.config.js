@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Mastering Phoenix',
-  tagline: 'Guía completa para dominar el framework web de Elixir',
+  title: 'Phoenixd',
+  tagline: 'Servidor de pagos Bitcoin a través de la red Lightning',
   // favicon: 'img/favicon.ico', // Ensure you have this file in static/img or remove/update path
 
   // Set the production url of your site here
@@ -40,17 +40,6 @@ const config = {
           sidebarPath: './sidebars.js',
           routeBasePath: '/', // Serve docs from the root
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -62,9 +51,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Mastering Phoenix',
+        title: 'Phoenixd',
         logo: {
-          alt: 'Phoenix Framework Logo',
+          alt: 'Phoenixd Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -75,7 +64,6 @@ const config = {
             label: 'Documentación',
             to: '/intro',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/phoenixframework/phoenix',
             label: 'GitHub',
@@ -107,16 +95,16 @@ const config = {
             title: 'Comunidad',
             items: [
               {
-                label: 'Elixir Forum',
-                href: 'https://elixirforum.com/c/phoenix-forum',
+                label: 'Bitcoin Forum',
+                href: 'https://bitcointalk.org/',
               },
               {
                 label: 'Discord',
-                href: 'https://discord.gg/elixir',
+                href: 'https://discord.gg/lightning',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/elixirphoenix',
+                href: 'https://twitter.com/lightning',
               },
             ],
           },
@@ -124,21 +112,17 @@ const config = {
             title: 'Más',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
                 label: 'GitHub',
-                href: 'https://github.com/phoenixframework/phoenix',
+                href: 'https://github.com/your-repo/phoenixd',
               },
               {
-                label: 'Sitio Oficial',
-                href: 'https://www.phoenixframework.org/',
+                label: 'Lightning Network',
+                href: 'https://lightning.network/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Mastering Phoenix. Construido con Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Phoenixd - Servidor de pagos Bitcoin Lightning. Construido con Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
