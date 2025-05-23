@@ -20,6 +20,9 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
+  organizationName: 'btc-gdl', // Usually your GitHub org/user name.
+  projectName: 'Mastering-Phoenixd', // Usually your repo name.
+  
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
@@ -62,7 +65,7 @@ const config = {
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Documentation',
-            to: '/intro',
+            to: '/Install',
           },
           {
             href: 'https://github.com/ACINQ/phoenixd',
@@ -84,15 +87,15 @@ const config = {
             items: [
               {
                 label: 'Introduction',
-                to: '/intro',
+                to: '/',
               },
               {
                 label: 'Installation',
-                to: '/intro',
+                to: '/Install',
               },
               {
                 label: 'Guides',
-                to: '/intro',
+                to: '/Install',
               },
             ],
           },
@@ -100,8 +103,8 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Bitcoin Forum',
-                href: 'https://bitcointalk.org/',
+                label: 'Bitcoin GDL',
+                href: 'https://btcgdl.com/',
               },
               {
                 label: 'Discord',
@@ -118,7 +121,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/your-repo/phoenixd',
+                href: 'https://github.com/btcgdl',
               },
               {
                 label: 'Lightning Network',
@@ -127,7 +130,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Phoenixd - Bitcoin Lightning Payment Server. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} BTC GDL - Bitcoin Lightning Payment Server. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
