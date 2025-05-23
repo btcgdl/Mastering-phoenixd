@@ -1,9 +1,11 @@
 # Uninstall `phoenixd`  
 
-> [!CAUTION]  
-> This tutorial does **not** remove the `.phoenix/` directory.  
-> This directory contains your `seed.dat` file.  
-> **If deleted, all your funds will be permanently lost.** Proceed with caution.  
+:::danger
+This tutorial does **not** remove the `.phoenix/` directory.  
+This directory contains your `seed.dat` file.  
+**If deleted, all your funds will be permanently lost.** Proceed with caution.  
+:::
+
 
 To completely remove `phoenixd` from your system, follow these steps:  
 
