@@ -127,7 +127,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} BTC GDL - Bitcoin Lightning Payment Server. Built with Docusaurus.`,
       },
       prism: {
-        theme: prismThemes.github,
+        theme: prismThemes.oceanicNext,
         darkTheme: prismThemes.dracula,
       },
     }),

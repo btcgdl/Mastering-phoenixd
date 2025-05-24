@@ -16,9 +16,11 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(46, 139, 87, 0.1);
   
-  /* Custom colors */
+  /* Custom colors - Modo claro con fondo verde */
   --phoenix-accent: #4caf50;
-  --phoenix-light-bg: #f0f7f0;
+  --phoenix-light-bg: #e8f5e8;
+  --ifm-background-color: #e8f5e8;
+  --ifm-background-surface-color: #d4edda;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -74,10 +76,12 @@
 
 .navbar {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #237729 !important;
 }
 
 [data-theme='dark'] .navbar {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  background-color: #0d4715 !important;
 }
 
 .footer--dark {
@@ -86,6 +90,26 @@
 
 [data-theme='dark'] .footer--dark {
   --ifm-footer-background-color: #0d4715;
+}
+
+/* Header text color adjustments */
+.navbar__title,
+.navbar__link,
+.navbar__brand,
+.navbar a {
+  color: white !important;
+}
+
+.navbar__title:hover,
+.navbar__link:hover,
+.navbar__brand:hover {
+  color: #4caf50 !important;
+}
+
+[data-theme='dark'] .navbar__title:hover,
+[data-theme='dark'] .navbar__link:hover,
+[data-theme='dark'] .navbar__brand:hover {
+  color: #66bb6a !important;
 }
 
 /* Theme toggle button styling */
