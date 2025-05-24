@@ -15,6 +15,7 @@
   --ifm-color-primary-lightest: #3dba73;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(46, 139, 87, 0.1);
+  --ifm-code-background: #cacaca;
   
   /* Custom colors - Modo claro con fondo verde */
   --phoenix-accent: #4caf50;
