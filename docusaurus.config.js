@@ -12,7 +12,7 @@ const config = {
   url: 'https://btcgdl.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/Mastering-phoenixd/',
 
   organizationName: 'btc-gdl', // Usually your GitHub org/user name.
   projectName: 'Mastering-Phoenixd', // Usually your repo name.
