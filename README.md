@@ -54,13 +54,6 @@ npm run serve
 ```
 This command serves the built website locally for testing the production build.
 
-### Deploy to GitHub Pages
-Deploy the site to GitHub Pages:
-```bash
-npm run deploy
-```
-This command is a convenient way to build the website and push to the `gh-pages` branch.
-
 ### Clear Cache
 Clear Docusaurus cache and generated files:
 ```bash
