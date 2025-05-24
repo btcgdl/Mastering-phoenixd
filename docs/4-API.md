@@ -159,9 +159,11 @@ $ curl -X POST http://localhost:9740/payinvoice \
 **Endpoint**
 
 `POST /payoffer`
+
 **Description**
 
 Pays a BOLT12 Lightning offer. A 0.4% fee applies. Response includes the internal paymentId for that payment.
+
 **Parameters**
 
 - `amountSat` optional amount in satoshi. If unset, will pay the amount requested in the invoice
@@ -169,13 +171,14 @@ Pays a BOLT12 Lightning offer. A 0.4% fee applies. Response includes the interna
 - `message` an optional message for the recipient
 
 **Code example**
+
 ```sh
 $ curl -X POST http://localhost:9740/payoffer \
     -u :<phoenixd_api_password> \
     -d amountSat=123 \
     -d offer=lno1qgsyxjtl6luzd9t3pr62xr...9ry9zqagt0ktn4wwvqg52v9ss9ls22sqyqqestzp2l6decpn87pq96udsvx \
     -d message='👋 Hello!'
-````
+```
 
 **Response**
 
@@ -226,20 +229,21 @@ $ curl -X POST http://localhost:9740/paylnaddress \
 }
 ```
 
-Pay on-chain
-Endpoint
+## Pay on-chain
+**Endpoint**
 
-POST /sendtoaddress
-Description
+`POST /sendtoaddress`
+**Description**
 
 Sends part of your current balance to a Bitcoin address. The spliced channel is not closed and remains active. Returns the transaction id if the splice was successful.
-Parameters
 
-    amountSat amount in satoshi
-    address Bitcoin address where funds will be sent
-    feerateSatByte fee rate in satoshi per vbyte
+**Parameters**
 
-Code example
+- amountSat amount in satoshi
+- address Bitcoin address where funds will be sent
+- feerateSatByte fee rate in satoshi per vbyte
+
+**Code example**
 
 ```sh
 $ curl -X POST http://localhost:9740/sendtoaddress \
@@ -249,13 +253,13 @@ $ curl -X POST http://localhost:9740/sendtoaddress \
   -d feerateSatByte=12
 ```
 
-Response
+**Response**
 
 ```
 05a28b4972560655eeedaaf72c4d8e9f1a285e47e2d347734853b5e49ae9ead0
 ```
 
-Bump fee
+## Bump fee
 Endpoint
 
 POST /bumpfee
