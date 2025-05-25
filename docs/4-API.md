@@ -230,18 +230,20 @@ $ curl -X POST http://localhost:9740/paylnaddress \
 ```
 
 ## Pay on-chain
+
 **Endpoint**
 
 `POST /sendtoaddress`
+
 **Description**
 
 Sends part of your current balance to a Bitcoin address. The spliced channel is not closed and remains active. Returns the transaction id if the splice was successful.
 
 **Parameters**
 
-- amountSat amount in satoshi
-- address Bitcoin address where funds will be sent
-- feerateSatByte fee rate in satoshi per vbyte
+- `amountSat` amount in satoshi
+- `address` Bitcoin address where funds will be sent
+- `feerateSatByte` fee rate in satoshi per vbyte
 
 **Code example**
 
@@ -260,17 +262,20 @@ $ curl -X POST http://localhost:9740/sendtoaddress \
 ```
 
 ## Bump fee
-Endpoint
 
-POST /bumpfee
-Description
+**Endpoint**
+
+`POST /bumpfee`
+
+**Description**
 
 Makes all your unconfirmed transactions use a higher fee rate, using CPFP. Returns the ID of the child transaction.
-Parameters
 
-    feerateSatByte fee rate, in satoshi per vbyte.
+**Parameters**
 
-Code example
+- `feerateSatByte` fee rate, in satoshi per vbyte.
+
+**Code example**
 
 ```sh
 $ curl -X POST http://localhost:9740/bumpfee \
@@ -278,36 +283,40 @@ $ curl -X POST http://localhost:9740/bumpfee \
   -d feerateSatByte=11
 ```
 
-Response
+**Response**
 
 ```
 758b3df67c62c9cd9ebbde1ff6eaadc1c51f94d5b1a3efb2548236b9a6f1c659
 ```
 
-List incoming payments
-Endpoint
+## List incoming payments
 
-GET /payments/incoming
-Description
+**Endpoint**
+
+`GET /payments/incoming`
+
+**Description**
 
 Lists incoming payments.
-Parameters
 
-    from: start timestamp in millis from epoch, default 0
-    to: end timestamp in millis from epoch, default now
-    limit: number of payments in the page, default 20
-    offset: page offset, default 0
-    all: also return unpaid invoices
-    externalId: only include payments that use this external id.
 
-Code example
+**Parameters**
+
+- `from`: start timestamp in millis from epoch, default 0
+- `to`: end timestamp in millis from epoch, default now
+- `limit`: number of payments in the page, default 20
+- `offset`: page offset, default 0
+- `all`: also return unpaid invoices
+- `externalId`: only include payments that use this external id.
+
+**Code example**
 
 ```sh
 $ curl 'http://localhost:9740/payments/incoming?all=true&limit=3&offset=2' \
 	-u :<phoenixd_api_password>
 ```
 
-Response
+**Response**
 
 ```json
 [
@@ -352,18 +361,19 @@ Response
 ]
 ```
 
-Get incoming payment
-Endpoint
+## Get incoming payment
+
+**Endpoint**
 
 `GET /payments/incoming/{paymentHash}`
-Code Example
+**Code Example**
 
 ```sh
 $ curl http://localhost:9740/payments/incoming/b02a9a090c7a5ae7af39f4c8398629fd596d348a452a48d290a8e250bcdd7f31 \
 	-u :<phoenixd_api_password>
 ```
 
-Response
+**Response**
 
 ```json
 {
@@ -382,29 +392,32 @@ Response
 }
 ```
 
-List outgoing payments
-Endpoint
+## List outgoing payments
 
-GET /payments/outgoing
-Description
+**Endpoint**
+
+`GET /payments/outgoing`
+
+**Description**
 
 Lists outgoing payments.
-Parameters
 
-    from: start timestamp in millis from epoch, default 0
-    to: end timestamp in millis from epoch, default now
-    limit: number of payments in the page, default 20
-    offset: page offset, default 0
-    all: also return payments that have failed
+**Parameters**
 
-Code example
+- `from`: start timestamp in millis from epoch, default 0
+- `to`: end timestamp in millis from epoch, default now
+- `limit`: number of payments in the page, default 20
+- `offset`: page offset, default 0
+- `all`: also return payments that have failed
+
+**Code example**
 
 ```sh
 $ curl 'http://localhost:9740/payments/outgoing?all=true&limit=3&offset=2' \
 	-u :<phoenixd_api_password>
 ```
 
-Response
+**Response**
 
 ```json
 [
@@ -447,12 +460,14 @@ Response
 ]
 ```
 
-Get outgoing payment
-Endpoint
+## Get outgoing payment
+
+**Endpoint**
 
 `GET /payments/outgoing/{paymentId}`
 `GET /payments/outgoingbyhash/{paymentHash}`
-Code example
+
+**Code example**
 
 ```sh
 # by uuid
@@ -466,7 +481,7 @@ $ curl http://localhost:9740/payments/outgoingbyhash/9727389e1c776f4efb315c4effa
 	-u :<phoenixd_api_password>
 ```
 
-Response
+**Response**
 
 ```json
 {
@@ -484,50 +499,56 @@ Response
 }
 ```
 
-CSV export
-Endpoint
+## CSV export
 
-POST /export
-Description
+**Endpoint**
+
+`POST /export`
+
+**Description**
 
 Exports your successful payments history in a CSV file. Returns the path of the generated file on your file system.
 
 The resulting CSV allows precise tracking of the balance and fee credit, and shows the split between mining and service fees:
 
-    balance: sum of all amount_msat;
-    fee credit: sum of all fee_credit_msat.
+- balance: sum of all amount_msat
+- fee credit: sum of all fee_credit_msat
 
-Parameters
+**Parameters**
 
-    from: start timestamp in millis from epoch, default 0
-    to: end timestamp in millis from epoch, default now
+- `from`: start timestamp in millis from epoch, default 0
+- `to`: end timestamp in millis from epoch, default now
 
-Code example
+**Code example**
 
 ```sh
 $ curl http://localhost:9740/export \
 	-u :<phoenixd_api_password>
 ```
 
-Response
+**Response**
 
 ```
 payment history has been exported to /Users/foobar/.phoenix/exports/export-1729249806.csv
 ```
 
-Payments websocket
-Endpoint
+## Payments websocket
 
-WS /websocket
-Description
+**Endpoint**
+
+`WS /websocket`
+
+**Description**
 
 Streams JSON of received payments.
 
 The JSON payload will contain a type field (for now, only "payment_received") and other technical data. It can contain an externalId if one was provided when the invoice was created, or the payerKey/payerNote for offers.
-Authentication
+
+**Authentication**
 
 Authentication can be done either with basic auth or with the Sec-WebSocket-Protocol header.
-Websocket example
+
+**Websocket example**
 
 Using websocat, a command line utility for websocket:
 
@@ -537,19 +558,19 @@ $ websocat --basic-auth :<phoenixd_api_password> ws://127.0.0.1:9740/websocket
 { "type": "payment_received", "amountSat": 30, "payerKey": "02ad95a81c1865ddb41a49f07b11a70b3f8fcd68ae161e0eb561a074f6a223ff84", "paymentHash": "604def4dd6846ea6373ba27353b229ddb31ca1cb206d4becf95f82a0df4b8cfc" }
 ```
 
-Webhook
+## Webhook
 
 When a payment is received, phoenixd will execute an HTTP POST request to endpoints of your choice, if any are configured in the phoenix.conf settings. Use this webhook mechanism to notify an external system that a payment was successfully received.
 
 Notes:
 
-    The webhook endpoint should be https, but this is not enforced by Phoenixd.
+- The webhook endpoint should be https, but this is not enforced by Phoenixd.
 
-    To notify a specific webhook for a specific payment, use the webhookUrl parameter instead when creating the invoice.
+- To notify a specific webhook for a specific payment, use the webhookUrl parameter instead when creating the invoice.
 
-    The JSON payload is similar to the websocket events.
+- The JSON payload is similar to the websocket events.
 
-Configuration example
+**Configuration example**
 
 ```sh
 # in ~/.phoenix/phoenix.conf
@@ -558,7 +579,7 @@ webhook=https://webhook.site/aaaaaaaa-bbbb-xxxx-yyyy-zzzz
 webhook=https://anotherwebhook.com
 ```
 
-Webhook example
+**Webhook example**
 
 ```sh
 $ curl -X POST https://webhook.site/aaaaaaaa-bbbb-xxxx-yyyy-zzzz \
@@ -574,18 +595,20 @@ $ curl -X POST https://webhook.site/aaaaaaaa-bbbb-xxxx-yyyy-zzzz \
     }'
 ```
 
-Get node info
-Endpoint
+## Get node info
 
-GET /getinfo
-Code example
+**Endpoint**
+
+`GET /getinfo`
+
+**Code example**
 
 ```sh
 $ curl http://localhost:9740/getinfo \
     -u :<phoenixd_api_password>
 ```
 
-Response
+**Response**
 
 ```json
 {
@@ -604,18 +627,20 @@ Response
 }
 ```
 
-Get balance
-Endpoint
+## Get balance**
 
-GET /getbalance
-Code example
+**Endpoint**
+
+`GET /getbalance`
+
+**Code example**
 
 ```sh
 $ curl http://localhost:9740/getbalance \
     -u :<phoenixd_api_password>
 ```
 
-Response
+**Response**
 
 ```json
 {
@@ -624,18 +649,20 @@ Response
 }
 ```
 
-List channels
-Endpoint
+## List channels
 
-GET /listchannels
-Code example
+**Endpoint**
+
+`GET /listchannels`
+
+**Code example**
 
 ```sh
 $ curl http://localhost:9740/listchannels \
     -u :<phoenixd_api_password>
 ```
 
-Response
+**Response**
 
 ```json
 [
@@ -694,22 +721,25 @@ Response
 ]
 ```
 
-Close channel
-Endpoint
+## Close channel
 
-POST /closechannel
-Description
+**Endpoint**
+
+`POST /closechannel`
+
+**Description**
 
 Closes a given channel, and send all funds to an on-chain address. Returns the ID of the closing transaction.
 
 Attention: closing a channel is final, it cannot be cancelled.
-Parameters
+**Parameters**
 
-    channelId identifier of the channel to close
-    address bitcoin address where your balance will be sent to
-    feerateSatByte fee rate in satoshi per vbyte
+- `channelId` identifier of the channel to close
+- `address` bitcoin address where your balance will be sent to
+- `feerateSatByte` fee rate in satoshi per vbyte
 
-Code example
+**Code example**
+
 ```sh
 $ curl -X POST http://localhost:9740/closechannel \
  -u :<phoenixd_api_password> \
@@ -717,19 +747,24 @@ $ curl -X POST http://localhost:9740/closechannel \
  -d feerateSatByte=10 \
  -d address=tb1qrhv88h2rf7wscut7st3ha5uspx2njjr7xdzn5t
 ```
-Response
+
+**Response**
+
 ```
 758b3df67c62c9cd9ebbde1ff6eaadc1c51f94d5b1a3efb2548236b9a6f1c659
 ```
-Decode invoice
-Endpoint
+## Decode invoice
 
-POST /decodeinvoice
-Parameters
+**Endpoint**
 
-    invoice a Bolt11 invoice
+`POST /decodeinvoice`
 
-Code example
+**Parameters**
+
+invoice a Bolt11 invoice
+
+**Code example**
+
 ```sh
 $ curl -X POST http://localhost:9740/decodeinvoice \
  -u :<phoenixd_api_password> \
