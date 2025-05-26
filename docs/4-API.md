@@ -367,6 +367,7 @@ $ curl 'http://localhost:9740/payments/incoming?all=true&limit=3&offset=2' \
 **Endpoint**
 
 `GET /payments/incoming/{paymentHash}`
+
 **Code Example**
 
 ```sh
@@ -466,6 +467,7 @@ $ curl 'http://localhost:9740/payments/outgoing?all=true&limit=3&offset=2' \
 **Endpoint**
 
 `GET /payments/outgoing/{paymentId}`
+
 `GET /payments/outgoingbyhash/{paymentHash}`
 
 **Code example**
@@ -815,6 +817,7 @@ $ curl -X POST http://localhost:9740/decodeinvoice \
 `POST /decodeoffer`
 
 **Parameters**
+
 - `offer` a Bolt12 offer
 
 **Code example**
@@ -872,6 +875,7 @@ $ curl -X POST http://localhost:9740/decodeoffer \
 Estimates a liquidity fee for a given amount. Note that it depends on the current mining feerate, which is volatile. The estimate returned is the full cost and does not take into account any fee credit you may have.
 
 **Parameters**
+
 - `amountSat` the liquidiy amount, in satoshi.
 
 **Code example**
@@ -977,6 +981,7 @@ Note: The key used to sign is derived from the wallet's key (derivation depends 
 - `lnurl` the lnurl-auth resource
 
 **Code example**
+
 ```sh
 $ curl -X POST http://localhost:9740/lnurlauth \
  -u :<phoenixd_api_password> \
