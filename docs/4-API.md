@@ -105,6 +105,7 @@ lno1qgsyxjtl6luzd9t3pr62xr7eemp6awnejusgf6gw45q75vcfqqqqqqqgqvqcdgq2zdskugr0venx
 Gets a BIP-353 Lightning address from the LSP. Only works if you have a channel.
 
 Note you can also use third-party services or self-host the address.
+
 **Code example**
 
 ```sh
@@ -154,7 +155,7 @@ $ curl -X POST http://localhost:9740/payinvoice \
 }
 ```
 
-**Pay Bolt12 offer**
+## Pay Bolt12 offer
 
 **Endpoint**
 
@@ -511,8 +512,8 @@ Exports your successful payments history in a CSV file. Returns the path of the 
 
 The resulting CSV allows precise tracking of the balance and fee credit, and shows the split between mining and service fees:
 
-- balance: sum of all amount_msat
-- fee credit: sum of all fee_credit_msat
+- `balance`: sum of all amount_msat
+- `fee credit`: sum of all fee_credit_msat
 
 **Parameters**
 
@@ -627,7 +628,7 @@ $ curl http://localhost:9740/getinfo \
 }
 ```
 
-## Get balance**
+## Get balance
 
 **Endpoint**
 
@@ -732,6 +733,7 @@ $ curl http://localhost:9740/listchannels \
 Closes a given channel, and send all funds to an on-chain address. Returns the ID of the closing transaction.
 
 Attention: closing a channel is final, it cannot be cancelled.
+
 **Parameters**
 
 - `channelId` identifier of the channel to close
@@ -770,7 +772,9 @@ $ curl -X POST http://localhost:9740/decodeinvoice \
  -u :<phoenixd_api_password> \
  -d invoice=lntb10n1pngtqfhpp5qezkef9tussdxurernxpmur9fzm2g0gqjuffaypvd2r7ma8urh4scqpjsp5u3dgmgrry4advuse35al6d2j2ns9uewequpuwcf8eun0pk7m5lms9q7sqqqqqqqqqqqqqqqqqqqsqqqqqysgqdq4xysyymr0vd4kzcmrd9hx7mqz9grzjqwfn3p9278ttzzpe0e00uhyxhned3j5d9acqak5emwfpflp8z2cnfl6h8msfh3505gqqqqlgqqqqqeqqjq3krntmn2r4d8j0ncgztxkssymfpwy3lv48jt5zgq5te8c5h56r6r03a2nz09nye89pmyhncm64ppwcufntar2zs5m4jw2cfm8u9m3usqxju37k
 ```
-Response
+
+**Response**
+
 ```json
 {
     "chain": "testnet",
@@ -804,21 +808,25 @@ Response
     "timestampSeconds": 1720025399
 }
 ```
-Decode offer
-Endpoint
+## Decode offer
 
-POST /decodeoffer
-Parameters
+`Endpoint`
 
-    offer a Bolt12 offer
+`POST /decodeoffer`
 
-Code example
+**Parameters**
+- `offer` a Bolt12 offer
+
+**Code example**
+
 ```
 $ curl -X POST http://localhost:9740/decodeoffer \
  -u :<phoenixd_api_password> \
  -d offer=lno1qgsyxjtl6luzd9t3pr62xr...9ry9zqagt0ktn4wwvqg52v9ss9ls22sqyqqestzp2l6decpn87pq96udsvx
 ```
-Response
+
+**Response**
+
 ```json
 {
     "chain": "testnet",
@@ -852,51 +860,62 @@ Response
     "timestampSeconds": 1720025399
 }
 ```
-Estimate liquidity fees
-Endpoint
 
-POST /estimateliquidityfees
-Description
+## Estimate liquidity fees
+
+**Endpoint**
+
+`POST /estimateliquidityfees`
+
+**Description**
 
 Estimates a liquidity fee for a given amount. Note that it depends on the current mining feerate, which is volatile. The estimate returned is the full cost and does not take into account any fee credit you may have.
-Parameters
 
-    amountSat the liquidiy amount, in satoshi.
+**Parameters**
+- `amountSat` the liquidiy amount, in satoshi.
 
-Code example
+**Code example**
+
 ```
 $ curl -X POST http://localhost:9740/estimateliquidityfees \
  -u :<phoenixd_api_password> \
  -d amountSat=2000000
 ```
-Response
+
+**Response**
+
 ```json
 {
 "miningFeeSat": 1219,
 "serviceFeeSat": 20000
 }
 ```
-LNURL Pay
-Description
+## LNURL Pay
+
+**Description**
 
 Pays a LNURL-pay resource. Note that the service may apply restrictions on the amount to pay or the message -- the lnurl-pay flow is usually interactive.
 Endpoint
 
-POST /lnurlpay
-Parameters
+`POST /lnurlpay`
 
-    amountSat the amount to pay
-    lnurl the lnurl-pay resource
-    message a comment for the recipient
+**Parameters**
 
-Code example
+- `amountSat` the amount to pay
+- `lnurl` the lnurl-pay resource
+- `message` a comment for the recipient
+
+**Code example**
+
 ```sh
 $ curl -X POST http://localhost:9740/lnurlpay \
  -u :<phoenixd_api_password> \
  -d lnurl=LNURL1DP68GURN8GHJ7MRWW4EXCTNXD9SHG6NPVCHXXMMD9AKXUATJDSKHQCTE8AEK2UMND9HKU0TZV9JR2VM9XV6RVV3JVSUNWDRYXUCNVDFHV43KVE3KXQCRJDFHX33XGDENX9NRSVTRXCENVC3KV33NGWR9XQURWC3N8YEN2WP4V4JNZV8XSUH \
  -d amountSat=100
 ```
-Response
+
+**Response**
+
 ```json
     {
     "recipientAmountSat": 100,
@@ -906,24 +925,30 @@ Response
     "paymentPreimage": "5746edcdbf872fc508939f31f18998f294d579668f334a023804b992b0fe4842"
     }
 ```
-LNURL Withdraw
-Description
+
+## LNURL Withdraw
+
+**Description**
 
 Withdraws funds from a LNURL service. Phoenixd will withdraw the maximum amount authorized by the service.
 Endpoint
 
-POST /lnurlwithdraw
-Parameters
+`POST /lnurlwithdraw`
 
-    lnurl the lnurl-withdraw resource
+**Parameters**
 
-Code example
+- `lnurl` the lnurl-withdraw resource
+
+**Code example**
+
 ```sh
 $ curl -X POST http://localhost:9740/lnurlpay \
  -u :<phoenixd_api_password> \
  -d lnurl=lightning:LNURL1DP68GURN8GHJ7MRWW4EXCTNXD9SHG6NPVCHXXMMD9AKXUATJDSKHW6T5DPJ8YCTH8AEK2UMND9HKU0T9893XYVF5XQMX2EP4VYCNJWR9X56RSCEE893NYVP3VC6KGEPNX5UNGDFCV9NRJDNXXCMNXENZXPJXVCFS89NRWVFJXYCNXD3K89JNGAXMZVT
 ```
-Response
+
+**Response**
+
 ```json
 {
     "url": "https://lnurl.fiatjaf.com/lnurl-withdraw?session=e9bb1406ed5a198e548c99c201f5dd359458af96f673fb0dfa09f712113669e4",
@@ -934,25 +959,30 @@ Response
     "invoice": "lnbc40n1pnfqpstpp5npnnapuxylxelsat27q4dncgj...2f0tvfw33kspxfenxx"
 }
 ```
-LNURL Auth
-Description
+
+## LNURL Auth
+
+**Description**
 
 Authenticates a LNURL-auth resource to allow an action on a remote service. See LUD-04 for details.
 
 Note: The key used to sign is derived from the wallet's key (derivation depends on the lnurl service's domain). If you have different users using the same phoenixd instance, do not let them use this or they will share the same signature and pubkey!
-Endpoint
 
-POST /lnurlauth
-Parameters
+**Endpoint**
 
-    lnurl the lnurl-auth resource
+`POST /lnurlauth`
 
-Code example
+**Parameters**
+
+- `lnurl` the lnurl-auth resource
+
+**Code example**
 ```sh
 $ curl -X POST http://localhost:9740/lnurlauth \
  -u :<phoenixd_api_password> \
  -d lnurl=lnurl1dp68gurn8ghj7um5v93kketj9ehx2amn9ashq6f0d3hxzat5dqlhgct884kx7emfdcnxkvfav3nxxcehxyckvdrpxsexyden8qexywrpv33nvdmpxsukzdpnvgungct9xesnvcf3x9jnsenxvvurvcmzvd3rwdfevgmnwdpjxp3nqvg50j329
 ```
-Response
+
+**Response**
 
 authentication success
