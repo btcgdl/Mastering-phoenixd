@@ -30,7 +30,7 @@ fi
 
 if [[ ! -f "verify.sh" ]]; then
   echo "Downloading the verification script..."
-  if ! wget -q "$VERIFIER_URL"; then
+  if ! wget "$VERIFIER_URL"; then
     echo "❌ Failed to download the verification script." >&2
     exit 1
   fi
@@ -38,6 +38,9 @@ if [[ ! -f "verify.sh" ]]; then
 fi
 
 ./verify.sh
+
+verify_package
+
 if [[ $? -ne 0 ]]; then
   echo "❌ Verification failed, aborting installation"
   exit 1

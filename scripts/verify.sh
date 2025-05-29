@@ -6,7 +6,6 @@ PHOENIXD_SIG="https://github.com/ACINQ/phoenixd/releases/download/v${TAG}/SHA256
 ACINQ_PGP_KEY="https://acinq.co/pgp/padioupm.asc"
 
 verify_package() {
-  local response=""
 
   while true; do
     read -r -p "Verify package signature and integrity? (Y/N): " response
