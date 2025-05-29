@@ -39,11 +39,4 @@ fi
 
 ./verify.sh
 
-verify_package
-
-if [[ $? -ne 0 ]]; then
-  echo "❌ Verification failed, aborting installation"
-  exit 1
-fi
-
 unzip -j phoenixd-0.6.0-linux-x64.zip

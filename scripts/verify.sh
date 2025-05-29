@@ -50,3 +50,10 @@ verify_package() {
   echo "✅ Verification successful. The package is authentic and intact."
   return 0
 }
+
+verify_package
+
+if [[ $? -ne 0 ]]; then
+  echo "❌ Verification failed, aborting installation"
+  exit 1
+fi
