@@ -1,0 +1,1 @@
+rm -rf -v $HOME/phoenixd
