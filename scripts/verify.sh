@@ -16,38 +16,44 @@ verify_package() {
     esac
   done
 
-  echo "Downloading pgp key..."
-  if ! wget -q "$ACINQ_PGP_KEY"; then
-    echo "❌ Failed to download pgp key." >&2
+  echo "🔐 Starting package verification..."
+  
+  # Download and import PGP key
+  if ! wget -q "$ACINQ_PGP_KEY" 2>/dev/null; then
+    echo "❌ Failed to download PGP key." >&2
+    return 1
+  fi
+  
+  if ! gpg --import padioupm.asc >/dev/null 2>&1; then
+    echo "❌ Failed to import PGP key." >&2
     return 1
   fi
 
-  echo "Importing pgp key..."
-  if ! gpg --import padioupm.asc; then
-    echo "❌ Failed to import pgp key." >&2
-    return 1
-  fi
-
-  echo "Downloading signature file..."
-  if ! wget -q "$PHOENIXD_SIG"; then
+  # Download and verify signature
+  if ! wget -q "$PHOENIXD_SIG" 2>/dev/null; then
     echo "❌ Failed to download signature file." >&2
     return 1
   fi
 
-  echo "Verifying signatures..."
-  if ! gpg -d SHA256SUMS.asc > SHA256SUMS.stripped; then
-    echo "❌ Failed to decode signature file." >&2
+  if ! gpg --quiet --decrypt SHA256SUMS.asc > SHA256SUMS.stripped 2>/dev/null; then
+    echo "❌ Failed to verify signature." >&2
     return 1
   fi
 
-  echo "Verifying checksums..."
-  if ! sha256sum -c SHA256SUMS.stripped; then
-    echo "❌ Checksum verification failed!" >&2
-    echo "Visit https://github.com/ACINQ/phoenixd/releases for more information on how to verify the release" >&2
+  # Verify checksums
+  if sha256sum -c SHA256SUMS.stripped 2>/dev/null | grep -q " OK"; then
+    echo "✅ Package verification successful."
+  else
+    echo "❌ Checksum verification failed." >&2
+    echo "Visit https://github.com/ACINQ/phoenixd/releases for more information." >&2
     return 1
   fi
 
   echo "✅ Verification successful. The package is authentic and intact."
+  
+  # Clean up temporary files
+  rm -f padioupm.asc SHA256SUMS.asc SHA256SUMS.stripped 2>/dev/null
+  
   return 0
 }
 
