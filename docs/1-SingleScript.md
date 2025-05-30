@@ -7,12 +7,6 @@ The easiest way to install phoenixd is using our automated installation script. 
 Run the following command in your terminal:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scripts/install.sh | bash
-```
-
-Or if you prefer to download and inspect the script first:
-
-```bash
 wget https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scripts/install.sh
 chmod +x install.sh
 ./install.sh
