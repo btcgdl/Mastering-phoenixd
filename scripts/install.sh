@@ -60,7 +60,17 @@ fi
 echo "✅ phoenixd installed to $INSTALL_DIR"
 
 # optionally create a systemd service to start alby hub
-read -p "Do you want to setup a systemd service (requires sudo permission)? (y/n): " -n 1 -r
+if [[ -t 0 ]]; then
+  # Interactive mode
+  echo "Do you want to setup a systemd service (requires sudo permission)? (y/n): "
+  read -r REPLY
+else
+  # Non-interactive mode (e.g., curl | bash)
+  echo "Running in non-interactive mode. Skipping systemd service setup."
+  echo "To set up the systemd service later, run the script interactively."
+  REPLY="n"
+fi
+
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
   echo ""
