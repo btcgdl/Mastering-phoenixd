@@ -86,9 +86,8 @@ WantedBy=multi-user.target
 EOF
 
 echo ""
-echo ""
-
 sudo systemctl enable phoenixd
+echo ""
 sudo systemctl start phoenixd
 
 echo "Run 'sudo systemctl start/stop phoenixd' to start/stop Phoenix Daemon"
