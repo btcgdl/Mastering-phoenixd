@@ -87,7 +87,7 @@ Description=Phoenix Daemon
 After=network.target
 
 [Service]
-ExecStart=$INSTALL_DIR/phoenixd --agree-to-terms-of-service --chain testnet
+ExecStart=$INSTALL_DIR/phoenixd --agree-to-terms-of-service
 User=$USER
 Restart=always
 RestartSec=5
