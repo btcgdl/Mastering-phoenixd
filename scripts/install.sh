@@ -11,6 +11,8 @@ echo ""
 echo ""
 echo "⚡️ Welcome to Mastering phoenixd installer"
 echo "-----------------------------------------"
+echo "This script will install linux-x64 version of phoenixd"
+echo "-----------------------------------------"
 echo "Installing phoenixd ${TAG} from ${PHOENIXD_URL}"
 echo ""
 read -p "Absolute install directory path (default: $HOME/.local/bin): " USER_INSTALL_DIR

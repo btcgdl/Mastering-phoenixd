@@ -62,7 +62,7 @@ const config = {
             to: '/Install',
           },
           {
-            href: 'https://github.com/ACINQ/phoenixd',
+            href: 'https://github.com/btcgdl/Mastering-phoenixd',
             label: 'GitHub',
             position: 'right',
           },
@@ -101,12 +101,12 @@ const config = {
                 href: 'https://btcgdl.com/',
               },
               {
-                label: 'Discord',
-                href: 'https://discord.gg/lightning',
+                label: 'Instagram',
+                href: 'https://www.instagram.com/btc.gdl/',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/lightning',
+                href: 'https://twitter.com/btc_ln_gdl',
               },
             ],
           },
@@ -118,8 +118,8 @@ const config = {
                 href: 'https://github.com/btcgdl',
               },
               {
-                label: 'Lightning Network',
-                href: 'https://lightning.network/',
+                label: 'Lightning Network?',
+                href: 'https://en.wikipedia.org/wiki/Lightning_Network',
               },
             ],
           },
