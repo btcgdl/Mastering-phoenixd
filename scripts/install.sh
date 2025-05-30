@@ -13,9 +13,9 @@ echo "⚡️ Welcome to Mastering phoenixd installer"
 echo "-----------------------------------------"
 echo "Installing phoenixd ${TAG} from ${PHOENIXD_URL}"
 echo ""
-read -p "Absolute install directory path (default: $HOME/phoenixd): " USER_INSTALL_DIR
+read -p "Absolute install directory path (default: $HOME/.local/bin): " USER_INSTALL_DIR
 
-INSTALL_DIR="${USER_INSTALL_DIR:-$HOME/phoenixd}"
+INSTALL_DIR="${USER_INSTALL_DIR:-$HOME/.local/bin}"
 
 # Create installation directory
 mkdir -p $INSTALL_DIR
@@ -23,7 +23,7 @@ cd $INSTALL_DIR
 
 # Download and extract phoenixd
 echo "Downloading phoenixd..."
-if ! wget "$PHOENIXD_ZIP"; then
+if ! wget -q "$PHOENIXD_ZIP"; then
   echo "❌ Failed to download phoenixd from ${PHOENIXD_ZIP}" >&2
   exit 1
 fi
@@ -38,5 +38,57 @@ if [[ ! -f "verify.sh" ]]; then
 fi
 
 ./verify.sh
+if [[ $? -ne 0 ]]; then
+  echo "❌ Verification failed, aborting installation"
+  exit 1
+fi
+rm verify.sh
 
-unzip -j phoenixd-0.6.0-linux-x64.zip
+unzip -j phoenixd-${TAG}-linux-x64.zip
+
+rm -f phoenixd-${TAG}-linux-x64.zip
+
+# Ensure ~/.local/bin is in PATH
+if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && [[ "$INSTALL_DIR" == "$HOME/.local/bin" ]]; then
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+  echo "Added $HOME/.local/bin to PATH in ~/.bashrc"
+  echo "Run 'source ~/.bashrc' to use phoenixd"
+fi
+
+echo "✅ phoenixd installed to $INSTALL_DIR"
+
+# optionally create a systemd service to start alby hub
+read -p "Do you want to setup a systemd service (requires sudo permission)? (y/n): " -n 1 -r
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+  echo ""
+  echo ""
+  echo "Run 'phoenixd' to start the daemon"
+  echo "Run 'phoenix-cli' to interact with the daemon"
+  echo "✅ DONE"
+  exit
+fi
+
+sudo tee /etc/systemd/system/phoenixd.service > /dev/null << EOF
+[Unit]
+Description=Phoenix Daemon
+After=network.target
+
+[Service]
+ExecStart=$INSTALL_DIR/phoenixd --agree-to-terms-of-service --chain testnet
+User=$USER
+Restart=always
+RestartSec=5
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+echo ""
+echo ""
+
+sudo systemctl enable phoenixd
+sudo systemctl start phoenixd
+
+echo "Run 'sudo systemctl start/stop phoenixd' to start/stop Phoenix Daemon"
