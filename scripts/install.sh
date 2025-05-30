@@ -3,7 +3,7 @@
 # This script is for install phoenix on a Linux system.
 
 TAG="0.6.0"
-PHOENIXD_URL="github.com/ACINQ/phoenixd/releases/download/v${TAG}"
+PHOENIXD_URL="https://github.com/ACINQ/phoenixd/releases/download/v${TAG}"
 PHOENIXD_ZIP="${PHOENIXD_URL}/phoenixd-${TAG}-linux-x64.zip"
 VERIFIER_URL="https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scripts/verify.sh"
 
