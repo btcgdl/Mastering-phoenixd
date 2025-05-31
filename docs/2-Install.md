@@ -18,8 +18,8 @@ unzip -j phoenixd-0.6.0-linux-x64.zip
 Move the binaries to a global path:  
 
 ```sh
-sudo mv phoenixd /usr/bin/
-sudo mv phoenix-cli /usr/bin/
+sudo mv phoenixd /usr/local/bin/
+sudo mv phoenix-cli /usr/local/bin/
 ```  
 
 Remove the zip file

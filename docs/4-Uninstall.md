@@ -32,7 +32,7 @@ sudo systemctl reset-failed
 ## 4. Remove `phoenixd` Binaries
 
 ```sh
-sudo rm /usr/bin/phoenixd /usr/bin/phoenix-cli
+sudo rm /usr/local/bin/phoenix*
 ```
 
 ## 5. Verify the Service is Removed (Optional)
