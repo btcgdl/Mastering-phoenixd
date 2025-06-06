@@ -85,11 +85,11 @@ const config = {
               },
               {
                 label: 'Installation',
-                to: '/Install',
+                to: '/Script',
               },
               {
                 label: 'Guides',
-                to: '/Install',
+                to: '/Script',
               },
             ],
           },

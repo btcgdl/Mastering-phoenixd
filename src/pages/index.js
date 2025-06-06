@@ -17,12 +17,12 @@ function HomepageHeader() {
         <div className={styles.ctaButtons}>
           <Link
             className="button button--secondary button--lg"
-            to="/Install">
+            to="/Script">
             🚀 Start Tutorial
           </Link>
           <Link
             className="button button--outline button--lg"
-            to="/Flags"
+            to="/Install"
             style={{marginLeft: '1rem', color: 'white', borderColor: 'white'}}>
             📖 View Guides
           </Link>
@@ -83,7 +83,7 @@ function CallToAction() {
           <div className={styles.ctaButtons}>
             <Link
               className="button button--primary button--lg"
-              to="/Install">
+              to="/Script">
               📖 Start Tutorial
             </Link>
             <Link
