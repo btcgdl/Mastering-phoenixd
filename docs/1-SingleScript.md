@@ -18,7 +18,7 @@ Run the following command in your terminal:
 
 **Single command (recommended):**
 ```bash
-curl -s https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scripts/install.sh | bash -s -- --yes
+curl -fsSL https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scripts/install.sh | bash -s -- --yes
 ```
 
 **Alternative methods:**
