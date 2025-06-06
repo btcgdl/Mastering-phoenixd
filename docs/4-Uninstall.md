@@ -19,7 +19,7 @@ sudo systemctl disable phoenixd
 ## 2. Remove the Systemd Service File
 
 ```sh
-sudo rm /etc/systemd/system/phoenixd.service
+sudo rm -v /etc/systemd/system/phoenixd.service
 ```
 
 ## 3. Reload Systemd

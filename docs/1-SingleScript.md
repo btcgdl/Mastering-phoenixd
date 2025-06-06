@@ -11,7 +11,7 @@ Run the following command in your terminal:
 
 **Single command (recommended):**
 ```bash
-curl -sSL https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scripts/install.sh | bash
+curl -s https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scripts/install.sh | bash -s -- --yes
 ```
 
 **Alternative methods:**
@@ -20,6 +20,9 @@ curl -sSL https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scr
 ```bash
 wget https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scripts/install.sh
 chmod +x install.sh
+```
+
+```bash
 ./install.sh
 ```
 
