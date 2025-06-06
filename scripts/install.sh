@@ -118,5 +118,5 @@ sudo systemctl enable phoenixd
 echo ""
 sudo systemctl start phoenixd
 
-echo "Run 'sudo systemctl start phoenixd' to start Phoenix Daemon"
+echo "Run 'sudo systemctl status phoenixd' to check the status of Phoenix Daemon"
 echo "Run 'sudo systemctl stop phoenixd' to stop Phoenix Daemon"

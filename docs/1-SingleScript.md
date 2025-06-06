@@ -5,6 +5,13 @@ slug: /Script
 
 The easiest way to install phoenixd is using our automated installation script. This script handles downloading, verification, and setup of phoenixd on your Linux system.
 
+:::info
+**Read Before Installing**
+
+Please read through this entire page to understand what the installation script does, its requirements, and security implications before running any commands. The script will make system changes and may require sudo permissions.
+:::
+
+
 ## Quick Install
 
 Run the following command in your terminal:
@@ -16,15 +23,18 @@ curl -s https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scrip
 
 **Alternative methods:**
 
-**Using wget (Checking the files):**
-```bash
-wget https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scripts/install.sh
-chmod +x install.sh
-```
+If you prefer to review the script before running it, you can manually download and inspect it first:
 
-```bash
-./install.sh
-```
+*Download the script and make it executable:*
+   ```bash
+   wget https://raw.githubusercontent.com/btcgdl/Mastering-phoenixd/master/scripts/install.sh
+   chmod +x install.sh
+   ```
+
+*Run the script:*
+   ```bash
+   ./install.sh
+   ```
 
 ## What the Script Does
 
@@ -46,17 +56,6 @@ When you run the script, you'll see:
 Installing phoenixd 0.6.0 from github.com/ACINQ/phoenixd/releases/download/v0.6.0
 ```
 
-### Installation Directory
-
-The script will prompt for an installation directory:
-
-```
-Absolute install directory path (default: /home/user/.local/bin):
-```
-
-- **Default**: `~/.local/bin` (recommended for single-user installations)
-- **Custom**: You can specify any directory you prefer
-
 ### Package Verification
 
 The script includes automatic verification:
@@ -69,14 +68,6 @@ The script includes automatic verification:
 
 This ensures you're installing an authentic, unmodified version of phoenixd.
 
-### PATH Configuration
-
-If installing to `~/.local/bin`, the script automatically:
-
-- Checks if the directory is in your PATH
-- Adds it to your shell configuration if needed
-- Provides instructions to activate the changes
-
 ### Systemd Service Setup
 
 After installation, you'll be asked:
@@ -88,8 +79,17 @@ Do you want to setup a systemd service (requires sudo permission)? (y/n):
 If you choose **yes**:
 - Creates a systemd service file at `/etc/systemd/system/phoenixd.service`
 - Enables and starts the service
-- Configures phoenixd to run on testnet by default
+- Configures phoenixd to run on mainnet by default
 - Sets up automatic restart on failure
+
+You can then manage phoenixd using systemd commands:
+```bash
+sudo systemctl start phoenixd
+sudo systemctl stop phoenixd
+sudo systemctl restart phoenixd
+sudo systemctl status phoenixd
+journalctl -u phoenixd -f  # View logs
+```
 
 If you choose **no**:
 - You can run phoenixd manually with the `phoenixd` command
@@ -154,7 +154,7 @@ If package verification fails:
 If you encounter permission errors:
 - Ensure you have write access to the installation directory
 - Use `sudo` for system-wide installations
-- Consider using the default `~/.local/bin` directory
+- Consider using the `~/.local/bin` directory
 
 ## Security Notes
 
