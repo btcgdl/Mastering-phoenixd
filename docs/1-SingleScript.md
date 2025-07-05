@@ -42,7 +42,7 @@ The installation script performs the following operations:
 
 1. **Downloads phoenixd v0.6.0** from the official ACINQ GitHub releases
 2. **Verifies the package integrity** using GPG signatures and checksums
-3. **Installs to a directory in your PATH** (default: `~/.local/bin`)
+3. **Installs to a directory in your PATH** (default: `/usr/local/bin`)
 4. **Configures your shell environment** to recognize the phoenixd command
 5. **Optionally sets up a systemd service** for automatic startup
 
