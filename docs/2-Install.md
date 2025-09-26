@@ -11,8 +11,8 @@ slug: /Install
 Download and extract the latest version:  
 
 ```sh
-wget https://github.com/ACINQ/phoenixd/releases/download/v0.6.0/phoenixd-0.6.0-linux-x64.zip
-unzip -j phoenixd-0.6.0-linux-x64.zip
+wget https://github.com/ACINQ/phoenixd/releases/download/v0.6.2/phoenixd-0.6.2-linux-x64.zip
+unzip -j phoenixd-0.6.2-linux-x64.zip
 ```  
 
 Move the binaries to a global path:  
@@ -24,7 +24,7 @@ sudo mv phoenix-cli /usr/local/bin/
 
 Remove the zip file
 ```sh
-rm phoenixd-0.6.0-linux-x64.zip
+rm phoenixd-0.6.2-linux-x64.zip
 ```
 
 ## 2. Create a Systemd Service File  
