@@ -20,12 +20,18 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'es'],
+    path: 'i18n',
+    localeConfigs: {
+      es: {
+        label: 'Español',
+        direction: 'ltr',
+        htmlLang: 'es-ES',
+        calendar: 'gregory'
+      },
+    },
   },
 
   presets: [
@@ -60,16 +66,15 @@ const config = {
             position: 'left',
             label: 'Documentation',
             to: '/Install',
-          },
+          },/*
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },*/
           {
             href: 'https://github.com/btcgdl/Mastering-phoenixd',
             label: 'GitHub',
             position: 'right',
-          },
-          {
-            type: 'html',
-            position: 'right',
-            value: '<div style="width: 20px;"></div>', // Spacer
           },
         ],
       },
