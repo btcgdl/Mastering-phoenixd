@@ -66,11 +66,11 @@ const config = {
             position: 'left',
             label: 'Documentation',
             to: '/Install',
-          },/*
+          },
           {
             type: 'localeDropdown',
             position: 'right',
-          },*/
+          },
           {
             href: 'https://github.com/btcgdl/Mastering-phoenixd',
             label: 'GitHub',
