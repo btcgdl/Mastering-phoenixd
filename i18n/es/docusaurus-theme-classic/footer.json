@@ -1,26 +1,26 @@
 {
   "link.title.Docs": {
-    "message": "Docs",
+    "message": "Documentación",
     "description": "The title of the footer links column with title=Docs in the footer"
   },
   "link.title.Community": {
-    "message": "Community",
+    "message": "Comunidad",
     "description": "The title of the footer links column with title=Community in the footer"
   },
   "link.title.More": {
-    "message": "More",
+    "message": "Más",
     "description": "The title of the footer links column with title=More in the footer"
   },
   "link.item.label.Introduction": {
-    "message": "Introduction",
+    "message": "Introducción",
     "description": "The label of footer link with label=Introduction linking to /"
   },
   "link.item.label.Installation": {
-    "message": "Installation",
+    "message": "Instalación",
     "description": "The label of footer link with label=Installation linking to /Script"
   },
   "link.item.label.Guides": {
-    "message": "Guides",
+    "message": "Guías",
     "description": "The label of footer link with label=Guides linking to /Script"
   },
   "link.item.label.Bitcoin GDL": {
@@ -40,11 +40,11 @@
     "description": "The label of footer link with label=GitHub linking to https://github.com/btcgdl"
   },
   "link.item.label.Lightning Network?": {
-    "message": "Lightning Network?",
+    "message": "¿Qué es Lightning Network?",
     "description": "The label of footer link with label=Lightning Network? linking to https://en.wikipedia.org/wiki/Lightning_Network"
   },
   "copyright": {
-    "message": "Copyright © 2025 BTC GDL - Bitcoin Lightning Payment Server. Built with Docusaurus.",
+    "message": "Copyright © 2025 BTC GDL - Servidor de Pagos Bitcoin Lightning. Construido con Docusaurus.",
     "description": "The footer copyright"
   }
 }

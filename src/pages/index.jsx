@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
+import Translate from '@docusaurus/Translate';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -18,13 +19,13 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/Script">
-            🚀 Start Tutorial
+            <Translate id="homepage.startTutorial">🚀 Start Tutorial</Translate>
           </Link>
           <Link
             className="button button--outline button--lg"
             to="/Install"
             style={{marginLeft: '1rem', color: 'white', borderColor: 'white'}}>
-            📖 View Guides
+            <Translate id="homepage.viewGuides">📖 View Guides</Translate>
           </Link>
         </div>
       </div>
@@ -35,18 +36,18 @@ function HomepageHeader() {
 function FeatureList() {
   const features = [
     {
-      title: '📚 Complete Tutorial',
-      description: 'Learn step by step how to install, configure and use Phoenixd to process Lightning payments.',
+      title: <Translate id="features.completeTutorial.title"> 📚 Complete Tutorial </Translate>,
+      description: <Translate id="features.completeTutorial.description"> Learn step by step how to install, configure and use Phoenixd to process Lightning payments. </Translate>,
       icon: '📚'
     },
     {
-      title: '🎯 Practical Examples',
-      description: 'Detailed guides with real examples and use cases to implement in your projects.',
+      title: <Translate id="features.practicalExamples.title"> 🎯 Practical Examples </Translate>,
+      description: <Translate id="features.practicalExamples.description"> Detailed guides with real examples and use cases to implement in your projects.</Translate>,
       icon: '🎯'
     },
     {
-      title: '🔧 Advanced Configuration',
-      description: 'Master all available options and flags to optimize your Phoenixd server.',
+      title: <Translate id="features.advancedConfiguration.title"> 🔧 Advanced Configuration </Translate>,
+      description: <Translate id="features.advancedConfiguration.description"> Master all available options and flags to optimize your Phoenixd server. </Translate>,
       icon: '🔧'
     }
   ];
@@ -75,21 +76,23 @@ function CallToAction() {
     <section className={styles.ctaSection}>
       <div className="container">
         <div className={styles.cta}>
-          <h2>Ready to master Phoenixd?</h2>
+          <h2><Translate id="cta.title">Ready to master Phoenixd?</Translate></h2>
           <p>
-            This tutorial will guide you from basic installation to advanced configurations 
-            so you can implement Lightning payments in your applications.
+            <Translate id="cta.description">
+              This tutorial will guide you from basic installation to advanced configurations 
+              so you can implement Lightning payments in your applications.
+            </Translate>
           </p>
           <div className={styles.ctaButtons}>
             <Link
               className="button button--primary button--lg"
               to="/Script">
-              📖 Start Tutorial
+              <Translate id="cta.startTutorial">📖 Start Tutorial</Translate>
             </Link>
             <Link
               className="button button--secondary button--lg"
               to="/Flags">
-              ⚙️ View Configurations
+              <Translate id="cta.viewConfigurations">⚙️ View Configurations</Translate>
             </Link>
           </div>
         </div>
@@ -106,29 +109,29 @@ function StatsSection() {
           <div className="col col--3">
             <div className={styles.stat}>
               <h3>📖</h3>
-              <h4>Step-by-Step Tutorial</h4>
-              <p>Detailed guides</p>
+              <h4><Translate id="stats.stepByStep.title">Step-by-Step Tutorial</Translate></h4>
+              <p><Translate id="stats.stepByStep.description">Detailed guides</Translate></p>
             </div>
           </div>
           <div className="col col--3">
             <div className={styles.stat}>
               <h3>💡</h3>
-              <h4>Real Examples</h4>
-              <p>Practical use cases</p>
+              <h4><Translate id="stats.realExamples.title">Real Examples</Translate></h4>
+              <p><Translate id="stats.realExamples.description">Practical use cases</Translate></p>
             </div>
           </div>
           <div className="col col--3">
             <div className={styles.stat}>
               <h3>⚙️</h3>
-              <h4>Configuration</h4>
-              <p>All options</p>
+              <h4><Translate id="stats.configuration.title">Configuration</Translate></h4>
+              <p><Translate id="stats.configuration.description">All options</Translate></p>
             </div>
           </div>
           <div className="col col--3">
             <div className={styles.stat}>
               <h3>🌟</h3>
-              <h4>Updated</h4>
-              <p>Recent content</p>
+              <h4><Translate id="stats.updated.title">Updated</Translate></h4>
+              <p><Translate id="stats.updated.description">Recent content</Translate></p>
             </div>
           </div>
         </div>

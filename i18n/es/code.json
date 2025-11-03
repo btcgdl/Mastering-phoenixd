@@ -325,5 +325,93 @@
   "theme.tags.tagsPageTitle": {
     "message": "Etiquetas",
     "description": "The title of the tag list page"
+  },
+  "homepage.startTutorial": {
+    "message": "🚀 Iniciar Tutorial",
+    "description": "The text for the start tutorial button on the homepage"
+  },
+  "homepage.viewGuides": {
+    "message": "📖 Ver Guías",
+    "description": "The text for the view guides button on the homepage"
+  },
+  "features.completeTutorial.title": {
+    "message": "📚 Tutorial Completo",
+    "description": "Title for the complete tutorial feature"
+  },
+  "features.completeTutorial.description": {
+    "message": "Aprende paso a paso cómo instalar, configurar y usar Phoenixd para procesar pagos Lightning.",
+    "description": "Description for the complete tutorial feature"
+  },
+  "features.practicalExamples.title": {
+    "message": "🎯 Ejemplos Prácticos",
+    "description": "Title for the practical examples feature"
+  },
+  "features.practicalExamples.description": {
+    "message": "Guías detalladas con ejemplos reales y casos de uso para implementar en tus proyectos.",
+    "description": "Description for the practical examples feature"
+  },
+  "features.advancedConfiguration.title": {
+    "message": "🔧 Configuración Avanzada",
+    "description": "Title for the advanced configuration feature"
+  },
+  "features.advancedConfiguration.description": {
+    "message": "Domina todas las opciones y flags disponibles para optimizar tu servidor Phoenixd.",
+    "description": "Description for the advanced configuration feature"
+  },
+  "cta.title": {
+    "message": "¿Listo para dominar Phoenixd?",
+    "description": "Title for the call to action section"
+  },
+  "cta.description": {
+    "message": "Este tutorial te guiará desde la instalación básica hasta configuraciones avanzadas para que puedas implementar pagos Lightning en tus aplicaciones.",
+    "description": "Description for the call to action section"
+  },
+  "cta.startTutorial": {
+    "message": "📖 Iniciar Tutorial",
+    "description": "The text for the start tutorial button in the call to action section"
+  },
+  "cta.viewConfigurations": {
+    "message": "⚙️ Ver Configuraciones",
+    "description": "The text for the view configurations button in the call to action section"
+  },
+  "stats.stepByStep.title": {
+    "message": "Tutorial Paso a Paso",
+    "description": "Title for the step-by-step tutorial stat"
+  },
+  "stats.stepByStep.description": {
+    "message": "Guías detalladas",
+    "description": "Description for the step-by-step tutorial stat"
+  },
+  "stats.realExamples.title": {
+    "message": "Ejemplos Reales",
+    "description": "Title for the real examples stat"
+  },
+  "stats.realExamples.description": {
+    "message": "Casos de uso prácticos",
+    "description": "Description for the real examples stat"
+  },
+  "stats.configuration.title": {
+    "message": "Configuración",
+    "description": "Title for the configuration stat"
+  },
+  "stats.configuration.description": {
+    "message": "Todas las opciones",
+    "description": "Description for the configuration stat"
+  },
+  "stats.updated.title": {
+    "message": "Actualizado",
+    "description": "Title for the updated stat"
+  },
+  "stats.updated.description": {
+    "message": "Contenido reciente",
+    "description": "Description for the updated stat"
+  },
+  "layout.titlePart": {
+    "message": "Servidor de Red Lightning",
+    "description": "The server part of the layout title"
+  },
+  "layout.description": {
+    "message": "Aprende a configurar y usar Phoenixd, el servidor de pagos Bitcoin a través de Lightning Network. Guía completa de instalación y uso.",
+    "description": "The description for the layout"
   }
 }
