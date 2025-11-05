@@ -40,7 +40,7 @@ Si prefieres revisar el script antes de ejecutarlo, puedes descargarlo e inspecc
 
 El script de instalación realiza las siguientes operaciones:
 
-1. **Descarga phoenixd v0.6.2** de los lanzamientos oficiales de ACINQ en GitHub.
+1. **Descarga phoenixd v0.7.0** de los lanzamientos oficiales de ACINQ en GitHub.
 2. **Verifica la integridad del paquete** usando firmas GPG y checksums.
 3. **Instala en un directorio en tu PATH** (por defecto: `/usr/local/bin`).
 4. **Configura tu entorno de shell** para reconocer el comando `phoenixd`.
@@ -53,7 +53,7 @@ Cuando ejecutes el script, verás:
 ```
 ⚡️ Bienvenido al instalador de Mastering phoenixd
 -----------------------------------------
-Instalando phoenixd 0.6.2 desde github.com/ACINQ/phoenixd/releases/download/v0.6.2
+Instalando phoenixd 0.7.0 desde github.com/ACINQ/phoenixd/releases/download/v0.7.0
 ```
 
 ### Verificación del Paquete

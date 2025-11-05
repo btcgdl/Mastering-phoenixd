@@ -18,7 +18,7 @@ for arg in "$@"; do
   esac
 done
 
-TAG="0.6.2"
+TAG="0.7.0"
 PHOENIXD_URL="https://github.com/ACINQ/phoenixd/releases/download/v${TAG}"
 
 # Detect the OS architecture and set the appropriate URL
@@ -62,7 +62,7 @@ echo ""
 echo ""
 echo "⚡️ Welcome to Mastering phoenixd installer"
 echo "-----------------------------------------"
-echo "This script will install linux-${OS} version of phoenixd"
+echo "This script will install ${OS} version of phoenixd"
 echo "-----------------------------------------"
 
 # Check if phoenixd and phoenix-cli are already installed
@@ -126,6 +126,15 @@ sudo unzip -j phoenixd-${TAG}-${OS}.zip -d /usr/local/bin
 rm -f phoenixd-${TAG}-${OS}.zip
 
 echo "✅ phoenixd installed to $INSTALL_DIR"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  echo ""
+  echo "MacOS detected. Please ensure that $INSTALL_DIR is in your PATH."
+  echo "You can add the following line to your ~/.zshrc or ~/.bash_profile:"
+  echo 'export PATH="/usr/local/bin:$PATH"'
+  echo ""
+  exit 0
+fi
 
 # optionally create a systemd service to start phoenixd
 if [[ "$AUTO_YES" == true ]]; then
