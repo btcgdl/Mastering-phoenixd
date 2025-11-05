@@ -24,17 +24,35 @@ PHOENIXD_URL="https://github.com/ACINQ/phoenixd/releases/download/v${TAG}"
 # Detect the OS architecture and set the appropriate URL
 ARCH=$(uname -m)
 OS=$(uname -s)
-if [[ "$ARCH" == "x86_64" ]]; then
-  PHOENIXD_ZIP="${PHOENIXD_URL}/phoenixd-${TAG}-linux-x64.zip"
-  OS="linux-x64"
-elif [[ "$ARCH" == "aarch64" ]]; then
-  PHOENIXD_ZIP="${PHOENIXD_URL}/phoenixd-${TAG}-linux-arm64.zip"
-  OS="linux-arm64"
+
+if [[ "$OSTYPE" == "linux"* ]]; then
+  if [[ "$ARCH" == "x86_64" ]]; then
+    PHOENIXD_ZIP="${PHOENIXD_URL}/phoenixd-${TAG}-linux-x64.zip"
+    OS="linux-x64"
+  elif [[ "$ARCH" == "aarch64" ]]; then
+    PHOENIXD_ZIP="${PHOENIXD_URL}/phoenixd-${TAG}-linux-arm64.zip"
+    OS="linux-arm64"
+  else
+    echo "❌ Unsupported architecture: $ARCH"
+    exit 1
+  fi
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+
+  if [[ "$ARCH" == "x86_64" ]]; then
+    PHOENIXD_ZIP="${PHOENIXD_URL}/phoenixd-${TAG}-macos-x64.zip"
+    OS="macos-x64"
+  elif [[ "$ARCH" == "arm64" ]]; then
+    PHOENIXD_ZIP="${PHOENIXD_URL}/phoenixd-${TAG}-macos-arm64.zip"
+    OS="macos-arm64"
+  else
+    echo "❌ Unsupported architecture: $ARCH"
+    exit 1
+  fi
 else
-  echo "❌ Unsupported architecture: $ARCH"
+  echo "❌ Unsupported OS type: $OSTYPE"
   exit 1
 fi
-
+ 
 echo "Detected architecture: $ARCH"
 echo "Using URL: $PHOENIXD_ZIP"
 
