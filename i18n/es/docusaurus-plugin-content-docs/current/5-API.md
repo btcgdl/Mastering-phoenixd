@@ -1,6 +1,6 @@
 # Referencia de la API
 
-A continuación se muestra una referencia para la API de `phoenixd`, actualizada para la versión `0.6.0`.
+A continuación se muestra una referencia para la API de `phoenixd`, actualizada para la versión `0.7.0`.
 
 ## Seguridad
 
