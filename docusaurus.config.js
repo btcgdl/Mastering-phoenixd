@@ -53,6 +53,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       navbar: {
         title: 'Mastering Phoenixd',
         logo: {
@@ -66,6 +71,11 @@ const config = {
             position: 'left',
             label: 'Documentation',
             to: '/Install',
+          },
+          {
+            to: '/examples',
+            label: 'Examples',
+            position: 'left',
           },
           {
             type: 'localeDropdown',

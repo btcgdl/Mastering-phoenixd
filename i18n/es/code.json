@@ -413,5 +413,17 @@
   "layout.description": {
     "message": "Aprende a configurar y usar Phoenixd, el servidor de pagos Bitcoin a través de Lightning Network. Guía completa de instalación y uso.",
     "description": "The description for the layout"
+  },
+  "whoIsUsingPhoenixd": {
+    "message": "¿Quién está usando phoenixd?"
+  },
+  "examples.albyHub.description": {
+    "message": "Alby Hub es un nodo Lightning de Bitcoin autoalojado diseñado para ser fácil, conectable y rico en funciones, lo que permite a los usuarios ejecutar su propio nodo en cualquier lugar y convertirse en autosuficientes."
+  },
+  "examples.btcpayServer.description": {
+    "message": "BTCPay Server es un procesador de pagos de Bitcoin gratuito, de código abierto y autoalojado que permite pagos directos de Bitcoin entre pares sin tarifas ni intermediarios."
+  },
+  "examples.ambrosiaPOS.description": {
+    "message": "Ambrosia-POS es un sistema de punto de venta (POS) ligero diseñado para optimizar las operaciones diarias como la gestión de pedidos, mesas y finanzas, con un frontend en React y un backend en Kotlin."
   }
 }
