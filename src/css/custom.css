@@ -132,3 +132,72 @@
 [data-theme='dark'] .card:hover {
   border-color: var(--ifm-color-primary);
 }
+
+.examplesContainer {
+  padding: 4rem 2rem;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--ifm-card-background-color);
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: var(--ifm-global-shadow-lw);
+  transition: all 0.3s ease;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ifm-global-shadow-md);
+  border-color: var(--ifm-color-primary);
+}
+
+.logoContainer {
+  height: 100px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  max-height: 80px;
+  max-width: 220px;
+}
+
+.link {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: var(--ifm-color-primary-dark);
+}
+
+.description {
+  text-align: justify;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--ifm-font-color-secondary);
+}

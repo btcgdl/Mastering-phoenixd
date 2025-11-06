@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import styles from './index.modules.css';
+// import styles from './index.modules.css';
 import Translate from '@docusaurus/Translate';
 
 const projects = [
@@ -47,25 +47,25 @@ const projects = [
 function Examples() {
   return (
     <Layout title="Phoenixd Examples" description="Examples of projects using phoenixd">
-      <div className={styles.examplesContainer}>
-        <h1 className={styles.title}><Translate id="whoIsUsingPhoenixd">Who is using phoenixd?</Translate></h1>
-        <div className={styles.grid}>
+      <div className="examplesContainer">
+        <h1 className="title"><Translate id="whoIsUsingPhoenixd">Who is using phoenixd?</Translate></h1>
+        <div className="grid">
           {projects.map((project, index) => (
-            <div key={index} className={styles.card}>
-              <div className={styles.logoContainer}>
+            <div key={index} className="card">
+              <div className="logoContainer">
                 <ThemedImage
                   alt={`${project.name} logo`}
-                  className={styles.logo}
+                  className="logo"
                   sources={{
                     light: useBaseUrl(project.logo.light),
                     dark: useBaseUrl(project.logo.dark),
                   }}
                 />
               </div>
-              <a href={project.url} target="_blank" rel="noopener noreferrer" className={styles.link}>
+              <a href={project.url} target="_blank" rel="noopener noreferrer" className="link">
                 {project.name}
               </a>
-              <p className={styles.description}>{project.description}</p>
+              <p className="description">{project.description}</p>
             </div>
           ))}
         </div>
