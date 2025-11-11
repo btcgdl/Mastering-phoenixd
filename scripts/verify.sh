@@ -49,7 +49,7 @@ verify_package() {
   fi
   
   # Download and import PGP key
-  if ! curl -s -O "$ACINQ_PGP_KEY" 2>/dev/null; then
+  if ! curl -sL -O "$ACINQ_PGP_KEY" 2>/dev/null; then
     echo "❌ Failed to download PGP key." >&2
     return 1
   fi
@@ -60,7 +60,7 @@ verify_package() {
   fi
 
   # Download and verify signature
-  if ! curl -s -O "$PHOENIXD_SIG" 2>/dev/null; then
+  if ! curl -sL -O "$PHOENIXD_SIG" 2>/dev/null; then
     echo "❌ Failed to download signature file." >&2
     return 1
   fi

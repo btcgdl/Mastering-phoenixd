@@ -96,14 +96,14 @@ sudo mkdir -p $INSTALL_DIR
 
 # Download and extract phoenixd
 echo "Downloading phoenixd..."
-if ! curl -s -O "$PHOENIXD_ZIP"; then
+if ! curl -sL -O "$PHOENIXD_ZIP"; then
   echo "❌ Failed to download phoenixd from ${PHOENIXD_ZIP}" >&2
   exit 1
 fi
 
 if [[ ! -f "verify.sh" ]]; then
   echo "Downloading the verification script..."
-  if ! curl -s -O "$VERIFIER_URL"; then
+  if ! curl -sL -O "$VERIFIER_URL"; then
     echo "❌ Failed to download the verification script." >&2
     exit 1
   fi
