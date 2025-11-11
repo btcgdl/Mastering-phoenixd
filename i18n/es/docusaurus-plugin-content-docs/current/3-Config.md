@@ -82,12 +82,10 @@ slug: /Config
 **Semilla** Proporciona explícitamente una semilla mnemónica de 12 palabras. Úsalo con extrema precaución, ya que esto expondrá tu semilla en texto plano.
 
 - Bandera: `--seed <mnemónico_de_12_palabras>`
-- Config: `seed="word1 word2 ... word12"`
 
 **Ruta de la Semilla** Sobrescribe la ruta por defecto al archivo de semilla (por defecto es `datadir/seed.dat`).
 
 - Bandera: `--seed-path <ruta_al_archivo_de_semilla>`
-- Config: `seed-path="/path/to/seed.dat"`
 
 ### Opciones de Registro:
 
