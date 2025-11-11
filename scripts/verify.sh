@@ -41,9 +41,15 @@ verify_package() {
   fi
 
   echo "🔐 Starting package verification..."
+
+  if ! command -v gpg &> /dev/null
+  then
+      echo "⚠️  gpg is not installed. Skipping package verification." >&2
+      return 0
+  fi
   
   # Download and import PGP key
-  if ! wget -q "$ACINQ_PGP_KEY" 2>/dev/null; then
+  if ! curl -s -O "$ACINQ_PGP_KEY" 2>/dev/null; then
     echo "❌ Failed to download PGP key." >&2
     return 1
   fi
@@ -54,7 +60,7 @@ verify_package() {
   fi
 
   # Download and verify signature
-  if ! wget -q "$PHOENIXD_SIG" 2>/dev/null; then
+  if ! curl -s -O "$PHOENIXD_SIG" 2>/dev/null; then
     echo "❌ Failed to download signature file." >&2
     return 1
   fi

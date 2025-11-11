@@ -125,7 +125,7 @@ journalctl -u phoenixd -f
 ## Requisitos
 
 - **Sistema Operativo**: Linux (x64)
-- **Dependencias**: `wget`, `gpg`, `unzip`, `sha256sum`
+- **Dependencias**: `curl`, `unzip`, `sha256sum`
 - **Red**: Conexión a internet para las descargas.
 - **Permisos**: Acceso de escritura al directorio de instalación, sudo para el servicio de systemd.
 
