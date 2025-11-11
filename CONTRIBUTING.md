@@ -109,7 +109,7 @@ When reporting issues, please include:
 ```
 docs/
 ├── 1-Install.md        # Installation guide
-├── 2-Flags.md          # Command flags reference  
+├── 2-Config.md          # Command flags reference  
 ├── 3-Uninstall.md      # Uninstallation guide
 └── 4-API.md            # API documentation
 ```

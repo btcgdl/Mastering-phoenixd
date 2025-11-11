@@ -91,7 +91,7 @@ function CallToAction() {
             </Link>
             <Link
               className="button button--secondary button--lg"
-              to="/Flags">
+              to="/Config">
               <Translate id="cta.viewConfigurations">⚙️ View Configurations</Translate>
             </Link>
           </div>

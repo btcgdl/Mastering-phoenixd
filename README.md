@@ -66,7 +66,7 @@ npm run clear
 Mastering-phoenixd/
 ├── docs/                    # Documentation files
 │   ├── 1-Install.md        # Installation guide
-│   ├── 2-Flags.md          # Command flags reference
+│   ├── 2-Config.md          # Configuration guide
 │   ├── 3-Uninstall.md      # Uninstallation guide
 │   └── 4-API.md            # API documentation
 ├── src/

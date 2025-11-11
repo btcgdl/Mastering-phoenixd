@@ -171,5 +171,5 @@ Always review scripts before running them with elevated privileges.
 
 After installation, see:
 - [Installation Guide](./2-Install.md) for detailed configuration
-- [Command Line Flags](./3-Flags.md) for startup options
+- [Configuration](./3-Config.md) for startup options
 - [API Documentation](./5-API.md) for integration details

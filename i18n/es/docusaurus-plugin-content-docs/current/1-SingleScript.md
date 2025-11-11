@@ -171,5 +171,5 @@ Siempre revisa los scripts antes de ejecutarlos con privilegios elevados.
 
 Después de la instalación, consulta:
 - [Guía de Instalación](./2-Install.md) para una configuración detallada.
-- [Banderas de Línea de Comandos](./3-Flags.md) para opciones de inicio.
+- [Configuración](./3-Config.md) para opciones de inicio.
 - [Documentación de la API](./5-API.md) para detalles de integración.
