@@ -65,7 +65,7 @@ verify_package() {
     return 1
   fi
 
-  if ! gpg --quiet --decrypt SHA256SUMS.asc > SHA256SUMS.stripped 2>/dev/null; then
+  if ! gpg --quiet --verify SHA256SUMS.asc > SHA256SUMS.stripped 2>/dev/null; then
     echo "❌ Failed to verify signature." >&2
     return 1
   fi
