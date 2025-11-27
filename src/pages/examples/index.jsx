@@ -32,10 +32,10 @@ const projects = [
   },
   {
     name: 'Ambrosia-POS',
-    url: 'https://github.com/btcgdl/Ambrosia-POS',
+    url: 'https://github.com/olympus-btc/ambrosia',
     logo: {
-      light: 'https://btcgdl.github.io/Ambrosia-POS/img/logo.svg',
-      dark: 'https://btcgdl.github.io/Ambrosia-POS/img/logo.svg',
+      light: 'https://raw.githubusercontent.com/olympus-btc/ambrosia/refs/heads/main/client/public/ambrosia.svg',
+      dark: 'https://raw.githubusercontent.com/olympus-btc/ambrosia/refs/heads/main/client/public/ambrosia.svg',
     },
     description: 
         <Translate id="examples.ambrosiaPOS.description">
