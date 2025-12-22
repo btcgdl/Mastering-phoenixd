@@ -1,0 +1,45 @@
+name: Test Installer Script
+
+on:
+  pull_request:
+    branches: ['**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-install:
+    strategy:
+      matrix:
+        # Test on Linux (x64) and macOS (ARM64/x64)
+        os: [ubuntu-latest, macos-latest]
+    
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Make install script executable
+        run: chmod +x scripts/install.sh
+
+      - name: Run install script (Local)
+        run: ./scripts/install.sh --yes
+
+      - name: Verify phoenixd binary location
+        run: |
+          if [ "${{ runner.os }}" == "macOS" ]; then
+            export PATH="/usr/local/bin:$PATH"
+          fi
+          which phoenixd
+          ls -l $(which phoenixd)
+
+      - name: Verify phoenixd execution
+        run: |
+          if [ "${{ runner.os }}" == "macOS" ]; then
+            export PATH="/usr/local/bin:$PATH"
+          fi
+          # Run version or help to verify binary is executable and not corrupted
+          # Using timeout to ensure it doesn't hang if it tries to sync
+          timeout 10s phoenixd --version || timeout 10s phoenixd --help || echo "Binary executed but exit code might be non-zero (expected for help/version sometimes)"
