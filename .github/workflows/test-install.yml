@@ -43,5 +43,4 @@ jobs:
             export PATH="/usr/local/bin:$PATH"
           fi
           # Run version or help to verify binary is executable and not corrupted
-          # Using timeout to ensure it doesn't hang if it tries to sync
-          timeout 10s phoenixd --version || timeout 10s phoenixd --help || echo "Binary executed but exit code might be non-zero (expected for help/version sometimes)"
+          phoenixd --version || phoenixd --help || echo "Binary executed but exit code might be non-zero (expected for help/version sometimes)"
