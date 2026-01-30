@@ -313,7 +313,7 @@ Lista los pagos entrantes.
 **Ejemplo de código**
 
 ```sh
-$ curl \'http://localhost:9740/payments/incoming?all=true&limit=3&offset=2\' \
+$ curl 'http://localhost:9740/payments/incoming?all=true&limit=3&offset=2' \
 	-u :<phoenixd_api_password>
 ```
 
@@ -448,7 +448,7 @@ Lista los pagos salientes.
 **Ejemplo de código**
 
 ```sh
-$ curl \'http://localhost:9740/payments/outgoing?all=true&limit=3&offset=2\' \
+$ curl 'http://localhost:9740/payments/outgoing?all=true&limit=3&offset=2' \
 	-u :<phoenixd_api_password>
 ```
 
