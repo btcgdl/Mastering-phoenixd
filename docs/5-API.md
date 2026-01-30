@@ -43,7 +43,7 @@ A Bolt11 invoice is a non-reusable, expirable payment request for Lightning, wel
 
 ```sh
 $ curl -X POST http://localhost:9740/createinvoice \
-    -u :<phoenixd_api_password> \
+    -u :YOUR_PHOENIXD_PASSWORD \
     -d description='my first invoice' \
     -d amountSat=100 \
     -d externalId=foobar \
@@ -83,7 +83,7 @@ Note: a `getoffer` call is also available but it is deprecated. This `getoffer` 
 
 ```sh
 $ curl -X POST http://localhost:9740/createoffer \
-    -u :<phoenixd_api_password> \
+    -u :YOUR_PHOENIXD_PASSWORD \
     -d description='an offer for Pierre' \
     -d amountSat=100
 ```
@@ -110,7 +110,7 @@ Note you can also use third-party services or self-host the address.
 
 ```sh
 $ curl http://localhost:9740/getlnaddress \
-    -u :<phoenixd_api_password>
+    -u :YOUR_PHOENIXD_PASSWORD
 ```
 
 **Response**
@@ -138,7 +138,7 @@ Pays a BOLT11 Lightning invoice. A 0.4% fee applies. Response includes the inter
 
 ```sh
 $ curl -X POST http://localhost:9740/payinvoice \
-    -u :<phoenixd_api_password> \
+    -u :YOUR_PHOENIXD_PASSWORD \
     -d amountSat=1 \
     -d invoice=lntb10n1pjl3pmlpp5jkrt9qvl83knc0sg0xztjlw0fd6t40725hdyh3pq0arudswvw8sqcqpjsp5zsc4phrg5v6nl84wkd9vuqzlva22j2qwll28v37y9jgjs7ap2dxs9q7sqqqqqqqqqqqqqqqqqqqsqqqqqysgqdq4xysyymr0vd4kzcmrd9hx7mqz9grzjqwfn3p9278ttzzpe0e00uhyxhned3j5d9acqak5emwfpflp8z2cnfl6h8msfh3505gqqqqlgqqqqqeqqjq6f8fhkj0uma7m68arjj3m5gn339xh3m5fn4qj9r9xu550686m0y8kadeahnn02ucmyq9nfsj0vl5vhpl6g7h6fs8xa8wu2qr3yc6a2gp4h32vu
 ```
@@ -175,7 +175,7 @@ Pays a BOLT12 Lightning offer. A 0.4% fee applies. Response includes the interna
 
 ```sh
 $ curl -X POST http://localhost:9740/payoffer \
-    -u :<phoenixd_api_password> \
+    -u :YOUR_PHOENIXD_PASSWORD \
     -d amountSat=123 \
     -d offer=lno1qgsyxjtl6luzd9t3pr62xr...9ry9zqagt0ktn4wwvqg52v9ss9ls22sqyqqestzp2l6decpn87pq96udsvx \
     -d message='👋 Hello!'
@@ -212,7 +212,7 @@ Parameters
 
 ```sh
 $ curl -X POST http://localhost:9740/paylnaddress \
-    -u :<phoenixd_api_password> \
+    -u :YOUR_PHOENIXD_PASSWORD \
     -d amountSat=123 \
     -d address=flashybugle70@testnet.phoenixwallet.me \
     -d message='👋 Hello!'
@@ -250,7 +250,7 @@ Sends part of your current balance to a Bitcoin address. The spliced channel is 
 
 ```sh
 $ curl -X POST http://localhost:9740/sendtoaddress \
-  -u :<phoenixd_api_password> \
+  -u :YOUR_PHOENIXD_PASSWORD \
   -d amountSat=100000 \
   -d address=tb1qwnp38xc5qh35ch9l5p6a3r7kwupj9rw5a4jn3y \
   -d feerateSatByte=12
@@ -280,7 +280,7 @@ Makes all your unconfirmed transactions use a higher fee rate, using CPFP. Retur
 
 ```sh
 $ curl -X POST http://localhost:9740/bumpfee \
-  -u :<phoenixd_api_password> \
+  -u :YOUR_PHOENIXD_PASSWORD \
   -d feerateSatByte=11
 ```
 
@@ -314,7 +314,7 @@ Lists incoming payments.
 
 ```sh
 $ curl 'http://localhost:9740/payments/incoming?all=true&limit=3&offset=2' \
-	-u :<phoenixd_api_password>
+	-u :YOUR_PHOENIXD_PASSWORD
 ```
 
 **Response**
@@ -404,7 +404,7 @@ $ curl 'http://localhost:9740/payments/incoming?all=true&limit=3&offset=2' \
 
 ```sh
 $ curl http://localhost:9740/payments/incoming/1399476fe927fd02523ae203d05e3badeb27ee951c4d5dfdd06ba7f2d713864f \
-	-u :<phoenixd_api_password>
+	-u :YOUR_PHOENIXD_PASSWORD
 ```
 
 **Response**
@@ -449,7 +449,7 @@ Lists outgoing payments.
 
 ```sh
 $ curl 'http://localhost:9740/payments/outgoing?all=true&limit=3&offset=2' \
-	-u :<phoenixd_api_password>
+	-u :YOUR_PHOENIXD_PASSWORD
 ```
 
 **Response**
@@ -508,13 +508,13 @@ $ curl 'http://localhost:9740/payments/outgoing?all=true&limit=3&offset=2' \
 ```sh
 # by uuid
 $ curl http://localhost:9740/payments/outgoing/dddfb160-f5dc-4930-b0d9-bc7a2ebf7b21 \
-	-u :<phoenixd_api_password>
+	-u :YOUR_PHOENIXD_PASSWORD
 ```
 
 ```sh
 # by payment hash
 $ curl http://localhost:9740/payments/outgoingbyhash/9727389e1c776f4efb315c4effae02affcb723883d13433ea74cc9e3f2034a93 \
-	-u :<phoenixd_api_password>
+	-u :YOUR_PHOENIXD_PASSWORD
 ```
 
 **Response**
@@ -559,7 +559,7 @@ The resulting CSV allows precise tracking of the balance and fee credit, and sho
 
 ```sh
 $ curl http://localhost:9740/export \
-	-u :<phoenixd_api_password>
+	-u :YOUR_PHOENIXD_PASSWORD
 ```
 
 **Response**
@@ -589,7 +589,7 @@ Authentication can be done either with basic auth or with the Sec-WebSocket-Prot
 Using websocat, a command line utility for websocket:
 
 ```sh
-$ websocat --basic-auth :<phoenixd_api_password> ws://127.0.0.1:9740/websocket
+$ websocat --basic-auth :YOUR_PHOENIXD_PASSWORD ws://127.0.0.1:9740/websocket
 { "type": "payment_received", "amountSat": 15, "payerNote": "hello 👋", "payerKey": "02ad95a81c1865ddb41a49f07b11a70b3f8fcd68ae161e0eb561a074f6a223ff84", "paymentHash": "5ad2185b67c6ba2e65987ab22abf5b4f8c25049d1a3b5dda76f050bc7726aab3" }
 { "type": "payment_received", "amountSat": 30, "payerKey": "02ad95a81c1865ddb41a49f07b11a70b3f8fcd68ae161e0eb561a074f6a223ff84", "paymentHash": "604def4dd6846ea6373ba27353b229ddb31ca1cb206d4becf95f82a0df4b8cfc" }
 ```
@@ -687,7 +687,7 @@ X-Phoenix-Signature: 77ffc40401024fb417e45fdd002de06bdbf3b48b90d09d05cccd0646292
 
 ```sh
 $ curl http://localhost:9740/getinfo \
-    -u :<phoenixd_api_password>
+    -u :YOUR_PHOENIXD_PASSWORD
 ```
 
 **Response**
@@ -719,7 +719,7 @@ $ curl http://localhost:9740/getinfo \
 
 ```sh
 $ curl http://localhost:9740/getbalance \
-    -u :<phoenixd_api_password>
+    -u :YOUR_PHOENIXD_PASSWORD
 ```
 
 **Response**
@@ -741,7 +741,7 @@ $ curl http://localhost:9740/getbalance \
 
 ```sh
 $ curl http://localhost:9740/listchannels \
-    -u :<phoenixd_api_password>
+    -u :YOUR_PHOENIXD_PASSWORD
 ```
 
 **Response**
@@ -825,7 +825,7 @@ Attention: closing a channel is final, it cannot be cancelled.
 
 ```sh
 $ curl -X POST http://localhost:9740/closechannel \
- -u :<phoenixd_api_password> \
+ -u :YOUR_PHOENIXD_PASSWORD \
  -d channelId=1943e03b85c06c60678ecc0fefcae8317f0a1429838aaeed1c9df4e548d7c29c \
  -d feerateSatByte=10 \
  -d address=tb1qrhv88h2rf7wscut7st3ha5uspx2njjr7xdzn5t
@@ -850,7 +850,7 @@ invoice a Bolt11 invoice
 
 ```sh
 $ curl -X POST http://localhost:9740/decodeinvoice \
- -u :<phoenixd_api_password> \
+ -u :YOUR_PHOENIXD_PASSWORD \
  -d invoice=lntb10n1pngtqfhpp5qezkef9tussdxurernxpmur9fzm2g0gqjuffaypvd2r7ma8urh4scqpjsp5u3dgmgrry4advuse35al6d2j2ns9uewequpuwcf8eun0pk7m5lms9q7sqqqqqqqqqqqqqqqqqqqsqqqqqysgqdq4xysyymr0vd4kzcmrd9hx7mqz9grzjqwfn3p9278ttzzpe0e00uhyxhned3j5d9acqak5emwfpflp8z2cnfl6h8msfh3505gqqqqlgqqqqqeqqjq3krntmn2r4d8j0ncgztxkssymfpwy3lv48jt5zgq5te8c5h56r6r03a2nz09nye89pmyhncm64ppwcufntar2zs5m4jw2cfm8u9m3usqxju37k
 ```
 
@@ -945,7 +945,7 @@ Estimates a liquidity fee for a given amount. Note that it depends on the curren
 
 ```
 $ curl -X POST http://localhost:9740/estimateliquidityfees \
- -u :<phoenixd_api_password> \
+ -u :YOUR_PHOENIXD_PASSWORD \
  -d amountSat=2000000
 ```
 
@@ -976,7 +976,7 @@ Endpoint
 
 ```sh
 $ curl -X POST http://localhost:9740/lnurlpay \
- -u :<phoenixd_api_password> \
+ -u :YOUR_PHOENIXD_PASSWORD \
  -d lnurl=LNURL1DP68GURN8GHJ7MRWW4EXCTNXD9SHG6NPVCHXXMMD9AKXUATJDSKHQCTE8AEK2UMND9HKU0TZV9JR2VM9XV6RVV3JVSUNWDRYXUCNVDFHV43KVE3KXQCRJDFHX33XGDENX9NRSVTRXCENVC3KV33NGWR9XQURWC3N8YEN2WP4V4JNZV8XSUH \
  -d amountSat=100
 ```
@@ -1010,7 +1010,7 @@ Endpoint
 
 ```sh
 $ curl -X POST http://localhost:9740/lnurlpay \
- -u :<phoenixd_api_password> \
+ -u :YOUR_PHOENIXD_PASSWORD \
  -d lnurl=lightning:LNURL1DP68GURN8GHJ7MRWW4EXCTNXD9SHG6NPVCHXXMMD9AKXUATJDSKHW6T5DPJ8YCTH8AEK2UMND9HKU0T9893XYVF5XQMX2EP4VYCNJWR9X56RSCEE893NYVP3VC6KGEPNX5UNGDFCV9NRJDNXXCMNXENZXPJXVCFS89NRWVFJXYCNXD3K89JNGAXMZVT
 ```
 
@@ -1047,7 +1047,7 @@ Note: The key used to sign is derived from the wallet's key (derivation depends 
 
 ```sh
 $ curl -X POST http://localhost:9740/lnurlauth \
- -u :<phoenixd_api_password> \
+ -u :YOUR_PHOENIXD_PASSWORD \
  -d lnurl=lnurl1dp68gurn8ghj7um5v93kketj9ehx2amn9ashq6f0d3hxzat5dqlhgct884kx7emfdcnxkvfav3nxxcehxyckvdrpxsexyden8qexywrpv33nvdmpxsukzdpnvgungct9xesnvcf3x9jnsenxvvurvcmzvd3rwdfevgmnwdpjxp3nqvg50j329
 ```
 
