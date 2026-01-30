@@ -620,12 +620,12 @@ webhook=https://anotherwebhook.com
 
 ```sh
 $ curl -X POST https://webhook.site/aaaaaaaa-bbbb-xxxx-yyyy-zzzz \
-    --header \'accept: application/json\' \
-    --header \'accept-charset: UTF-8\' \
-    --header \'content-type: application/json\' \
-    --header \'host: webhook.site\' \
-    --header \'X-Phoenix-Signature: 91a8735c0cc3cfc4bb0f22044dcac78f2b67ed3935261f1564b78f971a015f2d\' \
-    --data $\'{\
+    --header 'accept: application/json' \
+    --header 'accept-charset: UTF-8' \
+    --header 'content-type: application/json' \
+    --header 'host: webhook.site' \
+    --header 'X-Phoenix-Signature: 91a8735c0cc3cfc4bb0f22044dcac78f2b67ed3935261f1564b78f971a015f2d' \
+    --data $'{
         "type": "payment_received",
         "timestamp": 1748269006918,
         "amountSat": 1,
@@ -633,7 +633,7 @@ $ curl -X POST https://webhook.site/aaaaaaaa-bbbb-xxxx-yyyy-zzzz \
         "externalId": null,
         "payerNote": null,
         "payerKey": null
-    }\'
+    }'
 ```
 
 ## Autenticación de Webhook
