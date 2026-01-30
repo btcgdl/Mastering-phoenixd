@@ -1,6 +1,6 @@
 # API reference
 
-Below is a reference for the `phoenixd` API, up-to-date for version `0.7.0`.
+Below is a reference for the `phoenixd` API, up-to-date for version `0.7.2`.
 
 ## Security
 
@@ -37,7 +37,7 @@ A Bolt11 invoice is a non-reusable, expirable payment request for Lightning, wel
 - `amountSat` (optional) the amount requested by the invoice, in satoshi. If not set, the invoice can be paid by any amount.
 - `expirySeconds` (optional) the invoice expiry in seconds, by default 3600 (1 hour).
 - `externalId` (optional) a custom identifier. Use that to link the invoice to an external system.
-- `webhookUrl` (optional) a webhook url that will be notified when this specific payment has been received. This notification is done in addition to the [#webhook](normal webhooks) defined in the configuration.
+- `webhookUrl` (optional) a webhook url that will be notified when this specific payment has been received. This notification is done in addition to the [#webhook](normal webhooks) defined in the configuration. This webhook is authenticated.
 
 **Code example**
 
@@ -324,16 +324,48 @@ $ curl 'http://localhost:9740/payments/incoming?all=true&limit=3&offset=2' \
   {
     "type": "incoming_payment",
     "subType": "lightning",
-    "paymentHash": "b02a9a090c7a5ae7af39f4c8398629fd596d348a452a48d290a8e250bcdd7f31",
-    "preimage": "d4ffb9d35c4f85bc2a11d09d7a35ef5799f19dcacd66740fc6b470c1b7e5ab9f",
-    "externalId": "some_custom_id",
-    "description": "foobar",
-    "invoice": "lntb1u1pnm73qvpp5kq4f5zgv0fdw0tee7nyrnp3fl4vk6dy2g54y355s4r39p0xa0ucscqzyssp5ljhykmd6a4ykvt683scnqd37umgy87x4nel4nc7gnhjahd86dvvq9q7sqqqqqqqqqqqqqqqqqqqsqqqqqysgqdq2vehk7cnpwgmqz9gxqyz5vqrzjqwfn3p9278ttzzpe0e00uhyxhned3j5d9acqak5emwfpflp8z2cnflaaxc6fnra0gcqqqqlgqqqqqeqqjqfrjwg5t3rg3k9mlnrsp0mglghr670hfwcunr5umyhjv4uegas6a3q7y9s3kg3a22ejmkgw9t98j0mhuz93ffkprtjtqx8mn068v3qasqhvlm9k",
-    "isPaid": true,
-    "receivedSat": 100,
+    "paymentHash": "5307f75da2a466d75c43593f45d4452853ba745860c008c61d3d0d0f24789b6d",
+    "preimage": "bfad93c6eff005d7d130a3a88fa7be269da26861063c20ad41e935fd5d174c3f",
+    "description": "1000 sat expiry 100s",
+    "invoice": "lntb10u1p5960u8pp52vrlwhdz53ndwhzrtyl5t4z99pfm5azcvrqq33sa85xs7frcndkscqzyssp58hpyavx3r39l6z9gnvtxv9pwfc52j2yk2dakxf4rtstfus369f7s9q7sqqqqqqqqqqqqqqqqqqqsqqqqqysgqdpqxycrqvpqwdshggr90pcxjuneyqcnqvrnmqz9gxqzryrzjqwfn3p9278ttzzpe0e00uhyxhned3j5d9acqak5emwfpflp8z2cnfll283f990e4ksqqqqlgqqqqqeqqjqdan93rk672ttjqdpgfznf48zwmw9ustqxt8wsgdxrvqddzwt0pcpwpxfdw6fk3h7yjc4xyhsq4yvslgrce368szx0vp2ev85ph2agvgpr4vfcq",
+    "isPaid": false,
+    "isExpired": true, // <--- the invoice has expired and cannot be paid anymore
+    "requestedSat": 1000,
+    "receivedSat": 0,
     "fees": 0,
-    "completedAt": 1740588077020,
-    "createdAt": 1740588044198
+    "expiresAt": 1750941675827,
+    "createdAt": 1750941575827
+  },
+  {
+    "type": "incoming_payment",
+    "subType": "lightning",
+    "paymentHash": "595a3f4824254c6fdbf0b07ba5bcc3953abbdce94e583085683d102e5e85338a",
+    "preimage": "ccfbc77a825d37a4f82b3a4ff3f278e92a46e232e7310efd5836a6bccf845528",
+    "description": "1000 sat expiry 250s",
+    "invoice": "lntb10u1p596skepp5t9dr7jpyy4xxlklskpa6t0xrj5athh8ffevrpptg85gzuh59xw9qcqzyssp59pl95q6y5gxtq75tf5nha039g2n0tx4w47qmxt4mkjhsxa29tlss9q7sqqqqqqqqqqqqqqqqqqqsqqqqqysgqdpqxycrqvpqwdshggr90pcxjuneyqer2vrnmqz9gxqz86rzjqwfn3p9278ttzzpe0e00uhyxhned3j5d9acqak5emwfpflp8z2cnfll283f990e4ksqqqqlgqqqqqeqqjq5u3svgk4j6hp2s6vyr4c7uawht0wnpplhnnmljmyzjr9r7a4qxd89anlgztszfvvczuvvqscmuaexajzjfc7wzsf46gzlqr2c24duyspfhymvf",
+    "isPaid": true,
+    "isExpired": false,
+    "requestedSat": 1000,
+    "receivedSat": 1050, // <--- Invoice was overpaid. The overpayment is receivedSat - requestedSat = 50 sat
+    "fees": 0,
+    "expiresAt": 1750942676001,
+    "completedAt": 1750942477605,
+    "createdAt": 1750942426001
+  },
+  {
+    "type": "incoming_payment",
+    "subType": "lightning",
+    "paymentHash": "1399476fe927fd02523ae203d05e3badeb27ee951c4d5dfdd06ba7f2d713864f",
+    "preimage": "a17e7be515418882adf36fbafae20d5bcf6e17bf17b6e08a1b4b5912e537574a",
+    "description": "amountless invoice",
+    "invoice": "lntb1p5963w3pp5zwv5wmlfyl7sy536ugpaqh3m4h4j0m54r3x4mlwsdwnl94cnse8scqzyssp5tc5jtzk7q7u4yfpa745p7rkuujw5cz5ytntj48z4fhetaguwr7js9q7sqqqqqqqqqqqqqqqqqqqsqqqqqysgqdqav9kk7atww3kx2umnyp5kuan0d93k2mqz9gxqyz5vqrzjqwfn3p9278ttzzpe0e00uhyxhned3j5d9acqak5emwfpflp8z2cnfll283f990e4ksqqqqlgqqqqqeqqjqgh7ctek00wl7d3e2syhjdgmlms3e7pkvjskxnu0p8rsdn52dlmgjtzw7s8y6uvdeft66053s593m92a5auj99gfdm8tng7a4v5wjyvqpx629fv",
+    "isPaid": true,
+    "isExpired": false,
+    "receivedSat": 1500,
+    "fees": 0,
+    "expiresAt": 1751029585548,
+    "completedAt": 1750943212490,
+    "createdAt": 1750943185548
   },
   {
     "type": "incoming_payment",
@@ -371,7 +403,7 @@ $ curl 'http://localhost:9740/payments/incoming?all=true&limit=3&offset=2' \
 **Code Example**
 
 ```sh
-$ curl http://localhost:9740/payments/incoming/b02a9a090c7a5ae7af39f4c8398629fd596d348a452a48d290a8e250bcdd7f31 \
+$ curl http://localhost:9740/payments/incoming/1399476fe927fd02523ae203d05e3badeb27ee951c4d5dfdd06ba7f2d713864f \
 	-u :<phoenixd_api_password>
 ```
 
@@ -379,18 +411,19 @@ $ curl http://localhost:9740/payments/incoming/b02a9a090c7a5ae7af39f4c8398629fd5
 
 ```json
 {
-  "type": "incoming_payment",
-  "subType": "lightning",
-  "paymentHash": "b02a9a090c7a5ae7af39f4c8398629fd596d348a452a48d290a8e250bcdd7f31",
-  "preimage": "d4ffb9d35c4f85bc2a11d09d7a35ef5799f19dcacd66740fc6b470c1b7e5ab9f",
-  "externalId": "some_custom_id",
-  "description": "foobar",
-  "invoice": "lntb1u1pnm73qvpp5kq4f5zgv0fdw0tee7nyrnp3fl4vk6dy2g54y355s4r39p0xa0ucscqzyssp5ljhykmd6a4ykvt683scnqd37umgy87x4nel4nc7gnhjahd86dvvq9q7sqqqqqqqqqqqqqqqqqqqsqqqqqysgqdq2vehk7cnpwgmqz9gxqyz5vqrzjqwfn3p9278ttzzpe0e00uhyxhned3j5d9acqak5emwfpflp8z2cnflaaxc6fnra0gcqqqqlgqqqqqeqqjqfrjwg5t3rg3k9mlnrsp0mglghr670hfwcunr5umyhjv4uegas6a3q7y9s3kg3a22ejmkgw9t98j0mhuz93ffkprtjtqx8mn068v3qasqhvlm9k",
-  "isPaid": true,
-  "receivedSat": 100,
-  "fees": 0,
-  "completedAt": 1740588077020,
-  "createdAt": 1740588044198
+    "type": "incoming_payment",
+    "subType": "lightning",
+    "paymentHash": "1399476fe927fd02523ae203d05e3badeb27ee951c4d5dfdd06ba7f2d713864f",
+    "preimage": "a17e7be515418882adf36fbafae20d5bcf6e17bf17b6e08a1b4b5912e537574a",
+    "description": "amountless invoice",
+    "invoice": "lntb1p5963w3pp5zwv5wmlfyl7sy536ugpaqh3m4h4j0m54r3x4mlwsdwnl94cnse8scqzyssp5tc5jtzk7q7u4yfpa745p7rkuujw5cz5ytntj48z4fhetaguwr7js9q7sqqqqqqqqqqqqqqqqqqqsqqqqqysgqdqav9kk7atww3kx2umnyp5kuan0d93k2mqz9gxqyz5vqrzjqwfn3p9278ttzzpe0e00uhyxhned3j5d9acqak5emwfpflp8z2cnfll283f990e4ksqqqqlgqqqqqeqqjqgh7ctek00wl7d3e2syhjdgmlms3e7pkvjskxnu0p8rsdn52dlmgjtzw7s8y6uvdeft66053s593m92a5auj99gfdm8tng7a4v5wjyvqpx629fv",
+    "isPaid": true,
+    "isExpired": false,
+    "receivedSat": 1500,
+    "fees": 0,
+    "expiresAt": 1751029585548,
+    "completedAt": 1750943212490,
+    "createdAt": 1750943185548
 }
 ```
 
@@ -573,6 +606,8 @@ Notes:
 
 - The JSON payload is similar to the websocket events.
 
+- The call is authenticated with a custom header.
+
 **Configuration example**
 
 ```sh
@@ -590,12 +625,56 @@ $ curl -X POST https://webhook.site/aaaaaaaa-bbbb-xxxx-yyyy-zzzz \
     --header 'accept-charset: UTF-8' \
     --header 'content-type: application/json' \
     --header 'host: webhook.site' \
+    --header 'X-Phoenix-Signature: 91a8735c0cc3cfc4bb0f22044dcac78f2b67ed3935261f1564b78f971a015f2d' \
     --data $'{
         "type": "payment_received",
-        "amountSat": 100,
-        "paymentHash": "ae4ad6c862986ca50e5ce9d295f2218396bf192c60be8a85b347eddf57622c15",
-        "externalId": "foobar"
+        "timestamp": 1748269006918,
+        "amountSat": 1,
+        "paymentHash": "7db610f2b418394f12ba84927868a4b98e6bca6a82dd644c905f4f0c257d336a",
+        "externalId": null,
+        "payerNote": null,
+        "payerKey": null
     }'
+```
+
+## Webhook authentication
+
+Webhook calls are authenticated with a `X-Phoenix-Signature` header, containing the HMAC-SHA256 signature of the whole JSON body of the webhook call, encoded in utf-8, using the `webhook-secret` configuration parameter, also encoded in utf-8:
+
+```
+X-Phoenix-Signature = hmacSha256(
+  msg = <full http post body encoded as utf8>
+  secret = <webhook-secret from phoenix.conf>
+)
+```
+
+This allows you to verify that the webhook call is genuine.
+
+**Example**
+
+Given this json body:
+
+```json
+{
+    "type": "payment_received",
+    "timestamp": 1712785550079,
+    "amountSat": 8,
+    "paymentHash": "e628f8a516e9d3ee5e212a675f8d0c9dc5e7a5d500c5f4f91c62e9e921492653",
+    "externalId": null
+}
+```
+
+and this secret:
+
+```
+# in phoenix.conf
+webhook-secret: ef72d3b96324106dfbf83f2a4efeff7dddb4ce923e9664cb56baf34cc52936b6
+```
+
+The resulting signature will be:
+
+```
+X-Phoenix-Signature: 77ffc40401024fb417e45fdd002de06bdbf3b48b90d09d05cccd06462920aed7
 ```
 
 ## Get node info
@@ -820,49 +899,33 @@ $ curl -X POST http://localhost:9740/decodeinvoice \
 
 - `offer` a Bolt12 offer
 
-**Code example**
-
-```
-$ curl -X POST http://localhost:9740/decodeoffer \
- -u :<phoenixd_api_password> \
- -d offer=lno1qgsyxjtl6luzd9t3pr62xr...9ry9zqagt0ktn4wwvqg52v9ss9ls22sqyqqestzp2l6decpn87pq96udsvx
-```
-
 **Response**
 
 ```json
 {
-    "chain": "testnet",
-    "amount": 1000,
-    "paymentHash": "06456ca4abe420d370791ccc1df06548b6a43d0097129e902c6a87edf4fc1deb",
-    "description": "1 Blockaccino",
-    "minFinalCltvExpiryDelta": 18,
-    "paymentSecret": "e45a8da063257ad672198d3bfd355254e05e65d90703c76127cf26f0dbdba7f7",
-    "paymentMetadata": "2a",
-    "extraHops": [
-        [
-            {
-                "nodeId": "03933884aaf1d6b108397e5efe5c86bcf2d8ca8d2f700eda99db9214fc2712b134",
-                "shortChannelId": "16734014x14719942x36770",
-                "feeBase": 1000,
-                "feeProportionalMillionths": 100,
-                "cltvExpiryDelta": 144
-            }
-        ]
+    "chain": "mainnet",
+    "chainHashes": [
+        "43497fd7f826957108f4a30fd9cec3aeba79972084e90ead01ea330900000000"
     ],
-    "features": {
-        "activated": {
-            "var_onion_optin": "Mandatory",
-            "payment_secret": "Mandatory",
-            "basic_mpp": "Optional",
-            "option_payment_metadata": "Optional",
-            "trampoline_payment_experimental": "Optional"
-        },
-        "unknown": []
-    },
-    "timestampSeconds": 1720025399
+    "path": [
+        {
+            "introductionNodeId": {
+                "publicKey": "03933884aaf1d6b108397e5efe5c86bcf2d8ca8d2f700eda99db9214fc2712b134"
+            },
+            "blindingKey": "021aeddbf39bf6e9a69bf331c7a5a524a55efaffd6643c127f66378d0ace9529f4",
+            "blindedNodes": [
+                {
+                    "blindedPublicKey": "0339e5efc9f4935ae8f84f6db02abf2450422e1fe8ac2e2080f479b1eccf37e1a7",
+                    "encryptedPayload": "9361a42a22f03b70d5039b8f53db5a2e81b83079fe4301d0284b7c18b2ceba42d4b43c168672593ba126d32b88cafdf49c49e7"
+                },
+                {
+                    "blindedPublicKey": "031448f2aa7355336a93fe304a4e14642881d42df65ceae73008a2985840bf8295",
+                    "encryptedPayload": "00cc1620abfa6e70199fc10175c6c186"
+                }
+            ]
+        }
+    ]
 }
-```
 
 ## Estimate liquidity fees
 

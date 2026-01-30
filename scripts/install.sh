@@ -3,7 +3,7 @@
 set -o pipefail
 
 # Constants
-TAG="0.7.0"
+TAG="0.7.2"
 PHOENIXD_RELEASE_BASE_URL="https://github.com/ACINQ/phoenixd/releases/download/v${TAG}"
 INSTALL_DIR="/usr/local/bin"
 
